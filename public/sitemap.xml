@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!-- IMPORTANT: remplace https://TON-DOMAINE.COM par ton domaine -->
+  <!-- Lastmod: 2025-12-25 -->
+
+  <!-- HOME -->
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he" />
+  </url>
+
+  <!-- COMMANDER -->
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/commander</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/commander" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/commander" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/commander</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/commander" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/commander" />
+  </url>
+
+  <!-- SERVICES / CONTACT / FAQ (si ces pages existent chez toi) -->
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/services</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/services" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/services" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/services</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/services" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/services" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/contact</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/contact" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/contact</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/contact" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/faq</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/faq" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/faq" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/faq</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/faq" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/faq" />
+  </url>
+
+  <!-- CITY PAGES -->
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/sofrout-netanya</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/sofrout-netanya" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/sofrout-netanya" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/sofrout-netanya</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/sofrout-netanya" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/sofrout-netanya" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/sofrout-jerusalem</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/sofrout-jerusalem" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/sofrout-jerusalem" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/sofrout-jerusalem</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/sofrout-jerusalem" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/sofrout-jerusalem" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/fr/sofrout-beit-shemesh</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/sofrout-beit-shemesh" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/sofrout-beit-shemesh" />
+  </url>
+
+  <url>
+    <loc>https://TON-DOMAINE.COM/he/sofrout-beit-shemesh</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://TON-DOMAINE.COM/fr/sofrout-beit-shemesh" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://TON-DOMAINE.COM/he/sofrout-beit-shemesh" />
+  </url>
+</urlset>
