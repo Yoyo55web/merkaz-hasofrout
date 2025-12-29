@@ -27,6 +27,13 @@ function buildWhatsAppLink(message: string) {
 export default function CommanderFormClient({ locale }: { locale: Locale }) {
   const isHebrew = locale === "he";
 
+  // Accent cohérent avec /commander/page.tsx
+  const accent =
+    locale === "he" ? "bg-indigo-600 hover:bg-indigo-700" : "bg-slate-900 hover:bg-black";
+
+  const accentSolid =
+    locale === "he" ? "bg-indigo-600 border-indigo-600 text-white" : "bg-slate-900 border-slate-900 text-white";
+
   // Radios
   const [productId, setProductId] = useState<ProductId>("mezouza");
 
@@ -34,52 +41,65 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
+  const [qty, setQty] = useState<string>("1");
   const [urgency, setUrgency] = useState("");
   const [details, setDetails] = useState("");
 
+  const NA_FR = "Non renseigné";
+  const NA_HE = "—";
+
   // Progress (3 étapes)
   const step = useMemo(() => {
-    // Étape 1: choix produit
     const hasStep1 = !!productId;
+    const hasStep2 =
+      name.trim().length > 1 &&
+      phone.trim().length > 3 &&
+      city.trim().length > 1 &&
+      qty.trim().length > 0;
 
-    // Étape 2: infos essentielles
-    const hasStep2 = name.trim().length > 1 && phone.trim().length > 3 && city.trim().length > 1;
-
-    // Étape 3: détails (optionnel mais recommandé)
     const hasStep3 = details.trim().length >= 10;
 
     if (hasStep1 && hasStep2 && hasStep3) return 3;
     if (hasStep1 && hasStep2) return 2;
     return 1;
-  }, [productId, name, phone, city, details]);
+  }, [productId, name, phone, city, qty, details]);
 
   const message = useMemo(() => {
     const product = productLabel(locale, productId);
 
+    const safeCity = city.trim() ? city.trim() : isHebrew ? NA_HE : NA_FR;
+    const safeUrgency = urgency.trim() ? urgency.trim() : isHebrew ? NA_HE : NA_FR;
+    const safeName = name.trim() ? name.trim() : isHebrew ? NA_HE : NA_FR;
+    const safePhone = phone.trim() ? phone.trim() : isHebrew ? NA_HE : NA_FR;
+    const safeQty = qty.trim() ? qty.trim() : isHebrew ? NA_HE : NA_FR;
+    const safeDetails = details.trim() ? details.trim() : isHebrew ? NA_HE : NA_FR;
+
     if (isHebrew) {
       return (
-        `שלום, אני רוצה להזמין / לבקש הערכה בנושא סת״ם.\n\n` +
+        `שלום, אני רוצה לבקש הערכה בנושא סת״ם.\n\n` +
         `מוצר/שירות: ${product}\n` +
-        `עיר: ${city || "—"}\n` +
-        `דחיפות: ${urgency || "—"}\n` +
-        `שם: ${name || "—"}\n` +
-        `טלפון: ${phone || "—"}\n\n` +
-        `פרטים:\n${details || "—"}\n\n` +
+        `כמות: ${safeQty}\n` +
+        `עיר: ${safeCity}\n` +
+        `דחיפות: ${safeUrgency}\n` +
+        `שם: ${safeName}\n` +
+        `טלפון: ${safePhone}\n\n` +
+        `פרטים:\n${safeDetails}\n\n` +
         `*אפשר לשלוח תמונות כאן מיד אחרי ההודעה.*`
       );
     }
 
     return (
-      `Bonjour, je souhaite commander / demander une estimation (STaM).\n\n` +
-      `Produit/Service : ${product}\n` +
-      `Ville : ${city || "—"}\n` +
-      `Urgence : ${urgency || "—"}\n` +
-      `Nom : ${name || "—"}\n` +
-      `Téléphone : ${phone || "—"}\n\n` +
-      `Détails :\n${details || "—"}\n\n` +
+      `Bonjour, je souhaite demander une estimation (STaM).\n\n` +
+      `• Produit/Service : ${product}\n` +
+      `• Quantité : ${safeQty}\n` +
+      `• Ville : ${safeCity}\n` +
+      `• Urgence : ${safeUrgency}\n` +
+      `• Nom : ${safeName}\n` +
+      `• Téléphone : ${safePhone}\n\n` +
+      `Détails :\n${safeDetails}\n\n` +
       `*Vous pouvez envoyer des photos sur WhatsApp juste après ce message.*`
     );
-  }, [isHebrew, locale, productId, city, urgency, name, phone, details]);
+  }, [isHebrew, locale, productId, city, qty, urgency, name, phone, details]);
 
   const waLink = useMemo(() => buildWhatsAppLink(message), [message]);
 
@@ -93,7 +113,7 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
       id="form"
       onSubmit={submit}
       className="mt-6 space-y-5 text-sm"
-      aria-label={isHebrew ? "טופס הזמנה" : "Formulaire de commande"}
+      aria-label={isHebrew ? "טופס בקשה" : "Formulaire de demande"}
     >
       {/* Progress bar 3 étapes */}
       <div className="space-y-2">
@@ -111,7 +131,7 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
 
         <div className="h-2 w-full rounded-full bg-slate-200">
           <div
-            className="h-2 rounded-full bg-emerald-600 transition-all"
+            className={`h-2 rounded-full transition-all ${locale === "he" ? "bg-indigo-600" : "bg-slate-900"}`}
             style={{ width: step === 1 ? "33%" : step === 2 ? "66%" : "100%" }}
           />
         </div>
@@ -120,18 +140,18 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
           {step === 1
             ? isHebrew
               ? "בחר מוצר כדי להתחיל."
-              : "Choisis le produit pour commencer."
+              : "Choisissez le produit pour commencer."
             : step === 2
               ? isHebrew
-                ? "מלא שם/טלפון/עיר, ואז אפשר לשלוח."
-                : "Remplis nom/téléphone/ville, puis tu peux envoyer."
+                ? "מלא שם/טלפון/עיר/כמות — ואז אפשר לשלוח."
+                : "Renseignez nom / téléphone / ville / quantité, puis vous pouvez envoyer."
               : isHebrew
                 ? "מושלם. אפשר לשלוח."
-                : "Parfait. Tu peux envoyer."}
+                : "Parfait. Vous pouvez envoyer."}
         </p>
       </div>
 
-      {/* Choix rapide (RADIOS) */}
+      {/* Choix produit */}
       <fieldset className="space-y-2">
         <legend className="font-medium">
           {isHebrew ? "בחר מוצר" : "Choisissez le produit"}
@@ -144,7 +164,7 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
               <label
                 key={p.id}
                 className={`cursor-pointer rounded-xl border px-3 py-3 transition ${
-                  checked ? "bg-emerald-600 text-white border-emerald-600" : "bg-white hover:bg-slate-50"
+                  checked ? accentSolid : "bg-white hover:bg-slate-50"
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -167,7 +187,7 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
         <p className="text-xs text-slate-500">
           {isHebrew
             ? "טיפ: אם יש תמונות/וידאו — שלח מיד אחרי ההודעה."
-            : "Astuce : si tu as des photos/vidéo, envoie-les juste après le message."}
+            : "Astuce : si vous avez des photos/vidéo, envoyez-les juste après le message."}
         </p>
       </fieldset>
 
@@ -204,6 +224,17 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
           dir={isHebrew ? "rtl" : "ltr"}
         />
 
+        <input
+          name="qty"
+          required
+          value={qty}
+          onChange={(e) => setQty(e.target.value)}
+          placeholder={isHebrew ? "כמות" : "Quantité"}
+          className="w-full rounded-xl border px-4 py-3"
+          dir={isHebrew ? "rtl" : "ltr"}
+          inputMode="numeric"
+        />
+
         <select
           name="urgency"
           required
@@ -213,10 +244,16 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
           dir={isHebrew ? "rtl" : "ltr"}
         >
           <option value="">{isHebrew ? "דחיפות" : "Urgence"}</option>
-          <option value={isHebrew ? "היום" : "Aujourd’hui"}>{isHebrew ? "היום" : "Aujourd’hui"}</option>
+          <option value={isHebrew ? "היום" : "Aujourd’hui"}>
+            {isHebrew ? "היום" : "Aujourd’hui"}
+          </option>
           <option value="24–48h">24–48h</option>
-          <option value={isHebrew ? "השבוע" : "Cette semaine"}>{isHebrew ? "השבוע" : "Cette semaine"}</option>
-          <option value={isHebrew ? "לא דחוף" : "Pas urgent"}>{isHebrew ? "לא דחוף" : "Pas urgent"}</option>
+          <option value={isHebrew ? "השבוע" : "Cette semaine"}>
+            {isHebrew ? "השבוע" : "Cette semaine"}
+          </option>
+          <option value={isHebrew ? "לא דחוף" : "Pas urgent"}>
+            {isHebrew ? "לא דחוף" : "Pas urgent"}
+          </option>
         </select>
 
         <textarea
@@ -226,8 +263,8 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
           onChange={(e) => setDetails(e.target.value)}
           placeholder={
             isHebrew
-              ? "פרטים נוספים (מה צריך? כמה יחידות? אפשר לצרף תמונה בוואטסאפ)"
-              : "Détails (quoi ? combien ? vous pourrez envoyer une photo sur WhatsApp)"
+              ? "פרטים נוספים (מה צריך? מצב? אפשר לצרף תמונה בוואטסאפ)"
+              : "Détails (quoi ? modèle/format ? état ? Vous pourrez envoyer une photo sur WhatsApp)"
           }
           className="w-full rounded-xl border px-4 py-3"
           dir={isHebrew ? "rtl" : "ltr"}
@@ -237,7 +274,7 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
       {/* CTA */}
       <button
         type="submit"
-        className="w-full rounded-xl bg-emerald-600 py-4 font-semibold text-white hover:bg-emerald-700"
+        className={`w-full rounded-xl py-4 font-semibold text-white transition ${accent}`}
       >
         {isHebrew ? "שלח לוואטסאפ" : "Envoyer sur WhatsApp"}
       </button>
@@ -246,7 +283,7 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
         {isHebrew ? "אין תשלום בשלב זה" : "Aucun paiement à ce stade"}
       </p>
 
-      {/* Mini FAQ sous le bouton (réduit les hésitations) */}
+      {/* Mini FAQ */}
       <div className="rounded-xl border bg-slate-50 p-4 text-xs text-slate-700 space-y-2">
         <div className="font-semibold">{isHebrew ? "שאלות קצרות" : "Mini FAQ"}</div>
 
@@ -254,7 +291,9 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
           <span className="font-semibold">
             {isHebrew ? "האם זה מחייב?" : "Est-ce engageant ?"}
           </span>{" "}
-          {isHebrew ? "לא. אתה מקבל הכוונה/הערכה ואז מחליט." : "Non. Tu reçois une estimation/orientation puis tu décides."}
+          {isHebrew
+            ? "לא. אתה מקבל הכוונה/הערכה ואז מחליט."
+            : "Non. Vous recevez une estimation/orientation, puis vous décidez."}
         </div>
 
         <div>
@@ -268,11 +307,13 @@ export default function CommanderFormClient({ locale }: { locale: Locale }) {
           <span className="font-semibold">
             {isHebrew ? "זמן מענה?" : "Délai de réponse ?"}
           </span>{" "}
-          {isHebrew ? "בדרך כלל באותו יום (תלוי בשעה ובעומס)." : "Souvent dans la journée (selon l’heure et la charge)."}
+          {isHebrew
+            ? "בדרך כלל באותו יום (תלוי בשעה ובעומס)."
+            : "Souvent dans la journée (selon l’heure et la charge)."}
         </div>
       </div>
 
-      {/* (Option) Aperçu message — utile pour confiance */}
+      {/* Aperçu WhatsApp */}
       <details className="rounded-xl border bg-white p-4">
         <summary className="cursor-pointer text-xs font-semibold text-slate-700">
           {isHebrew ? "תצוגת ההודעה (WhatsApp)" : "Aperçu du message (WhatsApp)"}

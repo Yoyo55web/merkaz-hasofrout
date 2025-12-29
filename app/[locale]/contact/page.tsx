@@ -25,16 +25,20 @@ export async function generateMetadata({
 
 const WHATSAPP_PHONE_INTL = "972585360510";
 const WHATSAPP_TEXT_FR =
-  "Bonjour, je souhaite vous contacter au sujet de STaM (téfilines / mezouzot / séfer Torah). Voici ma demande : ";
+  "Bonjour, je souhaite demander une estimation (STaM). Ville : [ ] • Produit : [ ] • Urgence : [ ] • Détails : ";
 const WHATSAPP_TEXT_HE =
-  "שלום, אני רוצה ליצור קשר לגבי סת״ם (תפילין / מזוזות / ספר תורה). הנה הבקשה שלי: ";
+  "שלום, אני רוצה לבקש הערכה בנושא סת״ם. עיר: [ ] • מוצר: [ ] • דחיפות: [ ] • פרטים: ";
 
 function buildWaLink(locale: Locale) {
   const text = locale === "he" ? WHATSAPP_TEXT_HE : WHATSAPP_TEXT_FR;
   return `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(text)}`;
 }
 
-const PHONE_TEL = "+972-58-536-0510";
+const PHONE_IL_DISPLAY = "058-536-0510";
+const PHONE_IL_TEL = "+972585360510";
+
+const PHONE_FR_DISPLAY = "+33 1 77 47 32 45";
+const PHONE_FR_TEL = "+33177473245";
 
 export default async function Page({
   params,
@@ -49,7 +53,10 @@ export default async function Page({
   const waLink = buildWaLink(locale);
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main
+      className="min-h-screen bg-white text-slate-900"
+      dir={isHebrew ? "rtl" : "ltr"}
+    >
       <SeoJsonLd locale={locale} pathname="/contact" />
 
       {/* HERO */}
@@ -57,9 +64,7 @@ export default async function Page({
         <div className="mx-auto max-w-5xl px-5 py-10">
           <div className="flex flex-col gap-3">
             <p className="text-xs font-semibold text-emerald-700">
-              {isHebrew
-                ? "מענה ברור ומסודר"
-                : "Réponse claire & structurée"}
+              {isHebrew ? "מענה ברור ומסודר" : "Réponse claire & structurée"}
             </p>
 
             <h1 className="text-3xl font-semibold">
@@ -76,7 +81,7 @@ export default async function Page({
             <div className="mt-4 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={`/${locale}/commander`}
-                className="rounded-xl bg-emerald-600 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-700"
+                className="rounded-xl bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-black"
               >
                 {tr.cta.commanderOnline}
               </Link>
@@ -91,11 +96,54 @@ export default async function Page({
               </a>
 
               <a
-                href={`tel:${PHONE_TEL}`}
+                href={`tel:${PHONE_IL_TEL}`}
                 className="rounded-xl border bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
               >
-                {isHebrew ? "להתקשר" : "Appeler"}
+                {isHebrew ? "להתקשר (ישראל)" : "Appeler (Israël)"}
               </a>
+
+              <a
+                href={`tel:${PHONE_FR_TEL}`}
+                className="rounded-xl border bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
+              >
+                {isHebrew ? "להתקשר (צרפת)" : "Appeler (France)"}
+              </a>
+            </div>
+
+            {/* Info block: phones + response time */}
+            <div className="mt-4 rounded-2xl border bg-slate-50 p-4 text-xs text-slate-700">
+              <div className="grid gap-2 sm:grid-cols-3">
+                <div>
+                  <div className="font-semibold">
+                    {isHebrew ? "טלפון (ישראל)" : "Téléphone (Israël)"}
+                  </div>
+                  <div className="mt-1">{PHONE_IL_DISPLAY}</div>
+                </div>
+
+                <div>
+                  <div className="font-semibold">
+                    {isHebrew ? "טלפון (צרפת)" : "Téléphone (France)"}
+                  </div>
+                  <div className="mt-1">{PHONE_FR_DISPLAY}</div>
+                </div>
+
+                <div>
+                  <div className="font-semibold">
+                    {isHebrew ? "זמן תגובה" : "Délai de réponse"}
+                  </div>
+                  <div className="mt-1">
+                    {isHebrew
+                      ? "בדרך כלל באותו יום (תלוי בעומס)."
+                      : "Souvent dans la journée (selon l’heure et la charge)."}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-3 text-slate-600">
+                {isHebrew
+                  ? "דחוף? עדיף שיחה. לא דחוף? טופס/וואטסאפ ייתן מענה מדויק יותר."
+                  : "Urgence ? Un appel est préférable. Sinon, le formulaire/WhatsApp permet une réponse plus précise."}
+              </div>
             </div>
 
             <p className="mt-2 text-xs text-slate-500">

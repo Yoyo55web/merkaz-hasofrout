@@ -46,7 +46,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
     };
   }, [open]);
 
-  // Focus dans le drawer (simple, propre)
+  // Focus dans le drawer
   useEffect(() => {
     if (!open) return;
     setTimeout(() => drawerRef.current?.focus(), 0);
@@ -78,6 +78,13 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
             </Link>
 
             <Link
+              href={`/${locale}/services`}
+              className="rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+            >
+              {tr.nav.services}
+            </Link>
+
+            <Link
               href={`/${locale}/en-savoir-plus`}
               className="rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
             >
@@ -102,12 +109,10 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
           <LocaleSwitch />
         </div>
 
-        {/* ================= Mobile (clean) ================= */}
+        {/* ================= Mobile ================= */}
         <div className="flex items-center gap-2 md:hidden">
-          {/* Switch langue (Mobile) */}
           <LocaleSwitch />
 
-          {/* Hamburger */}
           <button
             type="button"
             aria-label={isHebrew ? "פתח תפריט" : "Ouvrir le menu"}
@@ -115,7 +120,6 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
             onClick={() => setOpen(true)}
             className="rounded-xl border bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
           >
-            {/* simple icon */}
             <span className="block h-0.5 w-5 bg-slate-900" />
             <span className="mt-1.5 block h-0.5 w-5 bg-slate-900" />
             <span className="mt-1.5 block h-0.5 w-5 bg-slate-900" />
@@ -159,7 +163,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
               </button>
             </div>
 
-            {/* Micro trust (dans le drawer) */}
+            {/* Micro trust */}
             <div className="px-5 py-4">
               <div className="rounded-2xl border bg-slate-50 p-4 text-xs text-slate-600">
                 {isHebrew ? (
@@ -177,7 +181,8 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
                       Cadre halakhique • discrétion
                     </div>
                     <div className="mt-1">
-                      Vérification/écriture par un sofer compétent (selon disponibilité)
+                      Vérification/écriture par un sofer compétent (selon
+                      disponibilité)
                     </div>
                   </>
                 )}
@@ -188,6 +193,10 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
             <nav className="px-5 pb-6">
               <DrawerLink href={`/${locale}`} onClick={close}>
                 {tr.nav.home}
+              </DrawerLink>
+
+              <DrawerLink href={`/${locale}/services`} onClick={close}>
+                {tr.nav.services}
               </DrawerLink>
 
               <DrawerLink href={`/${locale}/en-savoir-plus`} onClick={close}>

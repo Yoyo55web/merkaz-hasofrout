@@ -9,6 +9,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
 
   const commanderHref = `/${locale}/commander`;
   const enSavoirPlusHref = `/${locale}/en-savoir-plus`;
+  const servicesHref = `/${locale}/services`;
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -24,7 +25,6 @@ export default function HomeSections({ locale }: { locale: Locale }) {
             priority
             className="object-cover"
           />
-          {/* overlay clair pour lecture (premium) */}
           <div className="absolute inset-0 bg-white/75" />
         </div>
 
@@ -45,21 +45,28 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               </p>
 
               <p className="mt-4 text-sm text-slate-500">{tr.home.micro}</p>
-{/* Micro-copy halakhique (juste avant CTA) */}
-<div className="mt-5 text-xs text-slate-600">
-  {isHebrew ? (
-    <span>
-      <span className="font-semibold text-slate-900">מסגרת הלכתית:</span>{" "}
-      בדיקה/כתיבה ע״י סופר מקצועי (בהתאם לזמינות) • דיסקרטיות מלאה
-    </span>
-  ) : (
-    <span>
-      <span className="font-semibold text-slate-900">Cadre halakhique :</span>{" "}
-      vérification/écriture par un sofer compétent (selon disponibilité) • discrétion totale
-    </span>
-  )}
-</div>
 
+              {/* Micro-copy halakhique */}
+              <div className="mt-5 text-xs text-slate-600">
+                {isHebrew ? (
+                  <span>
+                    <span className="font-semibold text-slate-900">
+                      מסגרת הלכתית:
+                    </span>{" "}
+                    בדיקה/כתיבה ע״י סופר מקצועי (בהתאם לזמינות) • דיסקרטיות מלאה
+                  </span>
+                ) : (
+                  <span>
+                    <span className="font-semibold text-slate-900">
+                      Cadre halakhique :
+                    </span>{" "}
+                    vérification/écriture par un sofer compétent (selon
+                    disponibilité) • discrétion totale
+                  </span>
+                )}
+              </div>
+
+              {/* CTA */}
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href={commanderHref}
@@ -74,6 +81,14 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                 >
                   {tr.cta.goToForm}
                 </a>
+
+                {/* ✅ NEW: Services visible depuis l’accueil */}
+                <Link
+                  href={servicesHref}
+                  className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                >
+                  {isHebrew ? "שירותים" : "Services"}
+                </Link>
               </div>
 
               {/* Micro trust badges */}
@@ -103,7 +118,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                 )}
               </div>
 
-              {/* Lien "en savoir plus" (rassurance) */}
+              {/* En savoir plus */}
               <div className="mt-6">
                 <Link
                   href={enSavoirPlusHref}
@@ -114,7 +129,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {/* TRUST BOX (compact, convertit très bien) */}
+            {/* TRUST BOX */}
             <div className="rounded-2xl border bg-white/85 p-6 shadow-sm">
               <h2 className="text-lg font-semibold">{tr.home.trustTitle}</h2>
 
@@ -145,6 +160,14 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   className="rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
                 >
                   {isHebrew ? "להתחיל עכשיו" : "Démarrer maintenant"}
+                </Link>
+
+                {/* ✅ NEW: Services depuis la Trust box */}
+                <Link
+                  href={servicesHref}
+                  className="rounded-xl border bg-white px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                >
+                  {isHebrew ? "לכל השירותים" : "Voir tous les services"}
                 </Link>
               </div>
 
@@ -205,6 +228,92 @@ export default function HomeSections({ locale }: { locale: Locale }) {
             desc={tr.home.cat4d}
             href={commanderHref}
           />
+        </div>
+      </section>
+
+      {/* =========================
+          ✅ SERVICES (NEW) — lien direct depuis l’accueil
+      ========================== */}
+      <section className="border-t bg-slate-50">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                {isHebrew ? "שירותים" : "Services"}
+              </h2>
+              <p className="mt-2 text-sm text-slate-600">
+                {isHebrew
+                  ? "בחרו שירות — וקבלו מענה מסודר."
+                  : "Choisissez un service — et recevez une réponse structurée."}
+              </p>
+            </div>
+
+            <Link
+              href={servicesHref}
+              className="hidden rounded-xl border bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 md:inline-flex"
+            >
+              {isHebrew ? "לכל השירותים →" : "Tous les services →"}
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ServiceCard
+              locale={locale}
+              href={`/${locale}/mezouzot`}
+              title={isHebrew ? "מזוזות" : "Mézouzot"}
+              desc={
+                isHebrew
+                  ? "הזמנה/תיאום מזוזות כשרות לפי ההלכה."
+                  : "Commande & coordination de mézouzot cachères."
+              }
+            />
+            <ServiceCard
+              locale={locale}
+              href={`/${locale}/verifications`}
+              title={isHebrew ? "בדיקות" : "Vérifications"}
+              desc={
+                isHebrew
+                  ? "אבחון מצב לפני תיקון/החלפה."
+                  : "Diagnostic avant réparation ou remplacement."
+              }
+            />
+            <ServiceCard
+              locale={locale}
+              href={`/${locale}/reparations`}
+              title={isHebrew ? "תיקונים" : "Réparations"}
+              desc={
+                isHebrew
+                  ? "תיקונים לפי ההלכה אחרי בדיקה."
+                  : "Réparations selon la Halakha après vérification."
+              }
+            />
+            <ServiceCard
+              locale={locale}
+              href={`/${locale}/sefer-torah`}
+              title={isHebrew ? "ספר תורה" : "Séfer Torah"}
+              desc={
+                isHebrew
+                  ? "כתיבה/בדיקה/תיקון/הגהה."
+                  : "Écriture, vérification, réparations, haga’a."
+              }
+            />
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href={servicesHref}
+              className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+            >
+              {isHebrew ? "לכל השירותים" : "Voir tous les services"}
+            </Link>
+
+            <Link
+              href={commanderHref}
+              className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
+            >
+              {isHebrew ? "שליחת בקשה (30 שנ׳)" : "Faire une demande (30 sec)"}
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -364,7 +473,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       </section>
 
       {/* =========================
-          CITIES (SEO local) — optionnel mais utile
+          CITIES (SEO local)
       ========================== */}
       <section id="cities" className="border-t">
         <div className="mx-auto max-w-6xl px-5 py-12">
@@ -422,7 +531,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       </section>
 
       {/* =========================
-          FINAL CTA (court)
+          FINAL CTA
       ========================== */}
       <section className="border-t">
         <div className="mx-auto max-w-6xl px-5 py-12">
@@ -442,6 +551,13 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                 className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
               >
                 {tr.cta.start}
+              </Link>
+
+              <Link
+                href={servicesHref}
+                className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+              >
+                {isHebrew ? "לכל השירותים" : "Voir les services"}
               </Link>
 
               <Link
@@ -501,6 +617,32 @@ function CategoryCard({
         <div className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-900 group-hover:bg-slate-100">
           {isHebrew ? "להזמנה" : "Commander"}
         </div>
+      </div>
+    </Link>
+  );
+}
+
+function ServiceCard({
+  locale,
+  href,
+  title,
+  desc,
+}: {
+  locale: Locale;
+  href: string;
+  title: string;
+  desc: string;
+}) {
+  const isHebrew = locale === "he";
+  return (
+    <Link
+      href={href}
+      className="group rounded-2xl border bg-white p-5 transition hover:bg-white hover:shadow-sm"
+    >
+      <div className="text-base font-semibold text-slate-900">{title}</div>
+      <div className="mt-1 text-sm text-slate-600">{desc}</div>
+      <div className="mt-4 inline-flex rounded-xl border bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-900 group-hover:bg-slate-100">
+        {isHebrew ? "פתיחה →" : "Ouvrir →"}
       </div>
     </Link>
   );
