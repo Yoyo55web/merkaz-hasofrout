@@ -1,45 +1,107 @@
+// app/[locale]/sefer-torah/page.tsx
 import Link from "next/link";
-import { isLocale, type Locale, t } from "../_i18n";
+import { isLocale, type Locale } from "../_i18n";
 import { buildMetadata } from "../_seo/metadata";
+import SeoJsonLd from "../_seo/SeoJsonLd";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "fr";
+
   return buildMetadata({
     locale,
     title: locale === "he" ? "ספר תורה" : "Séfer Torah",
     description:
       locale === "he"
-        ? "כתיבה, הגהה ותיאום שירותי ספר תורה לפי ההלכה."
-        : "Écriture, vérification et coordination de services Séfer Torah selon la Halakha.",
+        ? "תיאום שירותי ספר תורה: כתיבה, בדיקה, תיקון והגהה לפי ההלכה."
+        : "Coordination Séfer Torah : écriture, vérification, תיקון et haga’a selon la Halakha.",
     pathname: "/sefer-torah",
   });
 }
 
-export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "fr";
+  const isHebrew = locale === "he";
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-10">
-      <h1 className="text-3xl font-bold">{locale === "he" ? "ספר תורה" : "Séfer Torah"}</h1>
-      <p className="mt-3 text-gray-600">
-        {locale === "he"
-          ? "תיאום מול סופרי סת״ם מקצועיים עבור כתיבה, תיקון, הגהה והשלמות."
-          : "Coordination avec des sofrim expérimentés : écriture, תיקון, vérification (haga’a) et compléments."}
-      </p>
+    <main className="min-h-screen bg-white text-slate-900">
+      <SeoJsonLd locale={locale} pathname="/sefer-torah" />
 
-      <ul className="mt-6 list-disc pl-6 text-gray-700 space-y-2">
-        <li>{locale === "he" ? "תיאום פרויקטים (קהילה/בית כנסת)" : "Projets (communauté / synagogue)"}</li>
-        <li>{locale === "he" ? "בדיקות תקופתיות והגהה" : "Vérifications périodiques et haga’a"}</li>
-        <li>{locale === "he" ? "שקיפות על שלבים וזמנים" : "Clarté sur les étapes et les délais"}</li>
-      </ul>
+      <section className="border-b bg-slate-50">
+        <div className="mx-auto max-w-4xl px-5 py-12">
+          <h1 className="text-3xl font-semibold tracking-tight">
+            {isHebrew ? "ספר תורה" : "Séfer Torah"}
+          </h1>
+          <p className="mt-3 text-slate-600">
+            {isHebrew
+              ? "תיאום פרויקטים ושירותים לספר תורה: כתיבה, בדיקה, תיקון והגהה — בצורה מסודרת וברורה."
+              : "Coordination de projets et services Séfer Torah : écriture, vérification, réparations et haga’a — de manière structurée et claire."}
+          </p>
 
-      <div className="mt-8">
-        <Link href={`/${locale}/commander`} className="rounded-xl bg-black px-5 py-3 text-white inline-block">
-          {t(locale, "cta.commanderOnline")}
-        </Link>
-      </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href={`/${locale}/commander`}
+              className="inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white hover:bg-slate-900"
+            >
+              {isHebrew ? "שליחת בקשה" : "Faire une demande"}
+            </Link>
+
+            <Link
+              href={`/${locale}/services`}
+              className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+            >
+              {isHebrew ? "לכל השירותים" : "Tous les services"}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-5 py-12">
+        <div className="rounded-2xl border bg-white p-6">
+          <h2 className="text-lg font-semibold">
+            {isHebrew ? "מה ניתן לתאם" : "Ce que nous pouvons coordonner"}
+          </h2>
+
+          <ul className="mt-3 space-y-2 text-sm text-slate-700">
+            <li>
+              •{" "}
+              {isHebrew
+                ? "תיקון והשלמות לפי צורך."
+                : "Réparations et compléments selon besoin."}
+            </li>
+            <li>
+              •{" "}
+              {isHebrew
+                ? "בדיקה/הגהה תקופתית."
+                : "Vérification / haga’a périodique."}
+            </li>
+            <li>
+              •{" "}
+              {isHebrew
+                ? "פרויקטים לקהילה/בית כנסת."
+                : "Projets pour communauté / synagogue."}
+            </li>
+          </ul>
+
+          <div className="mt-6 rounded-xl border bg-slate-50 px-4 py-3 text-sm text-slate-700">
+            <span className="font-semibold">
+              {isHebrew ? "שקיפות:" : "Transparence :"}
+            </span>{" "}
+            {isHebrew
+              ? "תקבלו שלבים וזמנים משוערים אחרי קבלת פרטי הבקשה."
+              : "Tu reçois des étapes et des délais estimatifs après réception des détails."}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
