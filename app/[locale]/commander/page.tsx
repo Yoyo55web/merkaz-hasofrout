@@ -45,9 +45,7 @@ export default async function Page({
       : "bg-slate-900 hover:bg-black";
 
   const accentSoft =
-    locale === "he"
-      ? "bg-indigo-600 text-white"
-      : "bg-slate-900 text-white";
+    locale === "he" ? "bg-indigo-600 text-white" : "bg-slate-900 text-white";
 
   const heroSrc = "/images/commander-hero.png";
 
@@ -88,6 +86,16 @@ export default async function Page({
                   : "Vérification et écriture réalisées par un sofer, selon les règles du STaM — avec transparence et discrétion."}
               </div>
 
+              {/* ✅ Quick Win #4: Delays & urgences */}
+              <div className="mt-4 rounded-xl border bg-white px-4 py-3 text-sm text-slate-700">
+                <div className="font-semibold">
+                  {tr.commander.delaysTitle}
+                </div>
+                <p className="mt-1 text-slate-600">
+                  {tr.commander.delaysText}
+                </p>
+              </div>
+
               {/* Steps */}
               <div className="mt-6 grid grid-cols-3 gap-2 text-xs text-center">
                 <div className={`rounded-lg py-2 ${accentSoft}`}>
@@ -101,9 +109,7 @@ export default async function Page({
                 </div>
               </div>
 
-              <p className="mt-4 text-xs text-slate-500">
-                {tr.commander.micro}
-              </p>
+              <p className="mt-4 text-xs text-slate-500">{tr.commander.micro}</p>
 
               {/* CTA */}
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -111,9 +117,7 @@ export default async function Page({
                   href="#form"
                   className={`inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white transition sm:w-auto ${accent}`}
                 >
-                  {isHebrew
-                    ? "לטופס (30 שנ׳)"
-                    : "Aller au formulaire (30 sec)"}
+                  {isHebrew ? "לטופס (30 שנ׳)" : "Aller au formulaire (30 sec)"}
                 </a>
 
                 <Link
@@ -146,9 +150,7 @@ export default async function Page({
               </div>
 
               <div className="rounded-2xl border bg-slate-50 p-6">
-                <h2 className="font-semibold">
-                  {tr.commander.halakhicTitle}
-                </h2>
+                <h2 className="font-semibold">{tr.commander.halakhicTitle}</h2>
                 <ul className="mt-3 space-y-2 text-sm text-slate-700">
                   <li>• {tr.commander.halakhic1}</li>
                   <li>• {tr.commander.halakhic4}</li>
@@ -156,9 +158,7 @@ export default async function Page({
                   <li>• {tr.commander.halakhic3}</li>
                 </ul>
                 <p className="mt-3 text-xs text-slate-500">
-                  {isHebrew
-                    ? "ללא תשלום בשלב זה"
-                    : "Aucun paiement à ce stade"}
+                  {isHebrew ? "ללא תשלום בשלב זה" : "Aucun paiement à ce stade"}
                 </p>
               </div>
             </div>
@@ -170,9 +170,7 @@ export default async function Page({
       <section className="mx-auto max-w-6xl px-5 py-12">
         <div className="grid gap-10 md:grid-cols-2">
           <div className="rounded-2xl border p-6">
-            <h2 className="text-xl font-semibold">
-              {tr.commander.formTitle}
-            </h2>
+            <h2 className="text-xl font-semibold">{tr.commander.formTitle}</h2>
             <p className="mt-2 text-sm text-slate-600">
               {tr.commander.formSubtitle}
             </p>
@@ -184,28 +182,20 @@ export default async function Page({
 
           {/* FAQ */}
           <div className="rounded-2xl border bg-slate-50 p-6">
-            <h3 className="text-lg font-semibold">
-              {tr.commander.faqTitle}
-            </h3>
+            <h3 className="text-lg font-semibold">{tr.commander.faqTitle}</h3>
 
             <div className="mt-4 space-y-4 text-sm text-slate-700">
               <div>
                 <div className="font-semibold">{tr.commander.faq1q}</div>
-                <p className="mt-1 text-slate-600">
-                  {tr.commander.faq1a}
-                </p>
+                <p className="mt-1 text-slate-600">{tr.commander.faq1a}</p>
               </div>
               <div>
                 <div className="font-semibold">{tr.commander.faq2q}</div>
-                <p className="mt-1 text-slate-600">
-                  {tr.commander.faq2a}
-                </p>
+                <p className="mt-1 text-slate-600">{tr.commander.faq2a}</p>
               </div>
               <div>
                 <div className="font-semibold">{tr.commander.faq3q}</div>
-                <p className="mt-1 text-slate-600">
-                  {tr.commander.faq3a}
-                </p>
+                <p className="mt-1 text-slate-600">{tr.commander.faq3a}</p>
               </div>
             </div>
 
@@ -214,9 +204,7 @@ export default async function Page({
                 href="#form"
                 className={`rounded-xl py-3 text-center text-sm font-semibold text-white transition ${accent}`}
               >
-                {isHebrew
-                  ? "למלא טופס (30 שנ׳)"
-                  : "Remplir le formulaire (30 sec)"}
+                {isHebrew ? "למלא טופס (30 שנ׳)" : "Remplir le formulaire (30 sec)"}
               </a>
 
               <Link
@@ -257,30 +245,20 @@ function HeroImageCard({
   return (
     <div className="relative overflow-hidden rounded-2xl border bg-slate-50 shadow-sm">
       <div
-        className={`relative w-full ${
-          mobile ? "aspect-[4/5]" : "aspect-[16/10]"
-        }`}
+        className={`relative w-full ${mobile ? "aspect-[4/5]" : "aspect-[16/10]"}`}
       >
         <Image
           src={src}
           alt={isHebrew ? "סת״ם — כתיבה על קלף" : "STaM — écriture sur parchemin"}
           fill
-          className={`object-cover ${
-            mobile ? "object-[55%_65%]" : "object-center"
-          }`}
+          className={`object-cover ${mobile ? "object-[55%_65%]" : "object-center"}`}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
 
-        <div
-          className={`pointer-events-none absolute inset-0 ${
-            mobile ? "bg-white/10" : "bg-white/5"
-          }`}
-        />
+        <div className={`pointer-events-none absolute inset-0 ${mobile ? "bg-white/10" : "bg-white/5"}`} />
         <div
           className={`pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b ${
-            mobile
-              ? "from-white/25 to-transparent"
-              : "from-white/15 to-transparent"
+            mobile ? "from-white/25 to-transparent" : "from-white/15 to-transparent"
           }`}
         />
       </div>

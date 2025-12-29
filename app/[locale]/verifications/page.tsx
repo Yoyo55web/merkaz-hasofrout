@@ -1,6 +1,6 @@
 // app/[locale]/verifications/page.tsx
 import Link from "next/link";
-import { isLocale, type Locale } from "../_i18n";
+import { isLocale, t, type Locale } from "../_i18n";
 import { buildMetadata } from "../_seo/metadata";
 import SeoJsonLd from "../_seo/SeoJsonLd";
 
@@ -31,9 +31,13 @@ export default async function Page({
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "fr";
   const isHebrew = locale === "he";
+  const tr = t(locale);
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main
+      className="min-h-screen bg-white text-slate-900"
+      dir={isHebrew ? "rtl" : "ltr"}
+    >
       <SeoJsonLd locale={locale} pathname="/verifications" />
 
       {/* HERO */}
@@ -85,7 +89,8 @@ export default async function Page({
       </section>
 
       {/* CONTENT */}
-      <section className="mx-auto max-w-4xl px-5 py-12">
+      <section className="mx-auto max-w-4xl px-5 py-12 space-y-6">
+        {/* What you get */}
         <div className="rounded-2xl border bg-white p-6">
           <h2 className="text-lg font-semibold">
             {isHebrew ? "מה תקבלו" : "Ce que vous recevez"}
@@ -113,10 +118,65 @@ export default async function Page({
           </ul>
 
           <div className="mt-4 rounded-xl border bg-slate-50 px-4 py-3 text-xs text-slate-600">
-            {isHebrew
-              ? "הערה: מרכזהסת״ם הוא מרכז תיאום. העבודה בפועל מתבצעת ע״י סופר מוסמך (בהתאם לזמינות)."
-              : "Note : Merkaz HaSTaM est un centre de coordination. Le travail est réalisé par un sofer qualifié (selon disponibilité)."}
+            {tr.common.noteCoordination}
           </div>
+        </div>
+
+        {/* ✅ Quick Win #3: Method */}
+        <div className="rounded-2xl border bg-white p-6">
+          <h2 className="text-lg font-semibold">
+            {isHebrew ? "שיטת הבדיקה שלנו" : "Notre méthode de vérification"}
+          </h2>
+
+          <p className="mt-2 text-sm text-slate-600">
+            {isHebrew
+              ? "בדיקה מסודרת לפי תהליך קבוע — כדי לתת מענה מדויק וברור."
+              : "Une vérification structurée selon un processus stable — pour vous donner une réponse précise et claire."}
+          </p>
+
+          <ol className="mt-4 space-y-2 text-sm text-slate-700 list-decimal pl-5">
+            <li>
+              {isHebrew
+                ? "בדיקה חזותית מדויקת של הכתב, הדיו והקלף."
+                : "Examen visuel précis de l’écriture, de l’encre et du klaf."}
+            </li>
+            <li>
+              {isHebrew
+                ? "בקרה הלכתית על צורת האותיות (לפי הצורך)."
+                : "Contrôle halakhique de la forme des lettres (selon le besoin)."}
+            </li>
+            <li>
+              {isHebrew
+                ? "בדיקת רווחים בין אותיות ומילים."
+                : "Vérification des espacements entre lettres et mots."}
+            </li>
+            <li>
+              {isHebrew
+                ? "במידת הצורך — בדיקה נוספת/אימות."
+                : "Si nécessaire — second contrôle / validation."}
+            </li>
+            <li>
+              {isHebrew
+                ? "סיכום ברור והמלצה: תיקון/החלפה/המשך."
+                : "Conclusion claire et recommandation : réparation / remplacement / suite."}
+            </li>
+          </ol>
+        </div>
+
+        {/* ✅ Quick Win #4: Delays */}
+        <div className="rounded-2xl border bg-slate-50 p-6">
+          <div className="font-semibold">{tr.common.delaysTitle}</div>
+          <p className="mt-2 text-sm text-slate-600">{tr.common.delaysText}</p>
+        </div>
+
+        {/* ✅ Quick Win #6: Examples */}
+        <div className="rounded-2xl border bg-white p-6">
+          <div className="font-semibold">{tr.common.examplesTitle}</div>
+          <ul className="mt-3 space-y-2 text-sm text-slate-700">
+            <li>• {tr.common.examples1}</li>
+            <li>• {tr.common.examples2}</li>
+            <li>• {tr.common.examples3}</li>
+          </ul>
         </div>
       </section>
     </main>

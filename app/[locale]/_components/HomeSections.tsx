@@ -12,7 +12,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
   const servicesHref = `/${locale}/services`;
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main className="min-h-screen bg-white text-slate-900" dir={isHebrew ? "rtl" : "ltr"}>
       {/* =========================
           HERO (visuel premium + CTA)
       ========================== */}
@@ -82,7 +82,6 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   {tr.cta.goToForm}
                 </a>
 
-                {/* ✅ NEW: Services visible depuis l’accueil */}
                 <Link
                   href={servicesHref}
                   className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
@@ -91,7 +90,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                 </Link>
               </div>
 
-              {/* Micro trust badges */}
+              {/* Micro trust badges (pictos) */}
               <div className="mt-7 grid grid-cols-2 gap-2 text-xs text-slate-600 sm:grid-cols-3">
                 <div className="rounded-xl border bg-white/80 px-3 py-2">
                   {isHebrew ? "מסגרת הלכתית" : "Cadre halakhique"}
@@ -162,7 +161,6 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   {isHebrew ? "להתחיל עכשיו" : "Démarrer maintenant"}
                 </Link>
 
-                {/* ✅ NEW: Services depuis la Trust box */}
                 <Link
                   href={servicesHref}
                   className="rounded-xl border bg-white px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
@@ -171,11 +169,42 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                 </Link>
               </div>
 
-              <p className="mt-3 text-xs text-slate-500">
-                {isHebrew ? "ללא תשלום בשלב זה" : "Aucun paiement à ce stade"}
-              </p>
+              <p className="mt-3 text-xs text-slate-500">{tr.common.noPayment}</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* =========================
+          ✅ QUICK WIN #1 — TRUST BADGES (version “pro”)
+          (3 cartes claires / au-dessus de la conversion)
+      ========================== */}
+      <section className="mx-auto max-w-6xl px-5 py-10">
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-2xl border bg-white p-6">
+            <div className="text-sm font-semibold text-slate-900">
+              {isHebrew ? "בדיקה הלכתית מחמירה" : "Contrôle halakhique rigoureux"}
+            </div>
+            <p className="mt-2 text-sm text-slate-600">{tr.home.trust1}</p>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6">
+            <div className="text-sm font-semibold text-slate-900">
+              {isHebrew ? "שקיפות לפני כל פעולה" : "Devis clair avant toute action"}
+            </div>
+            <p className="mt-2 text-sm text-slate-600">{tr.home.trust2}</p>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6">
+            <div className="text-sm font-semibold text-slate-900">
+              {isHebrew ? "דיסקרטיות ותיאום מקצועי" : "Discrétion & coordination"}
+            </div>
+            <p className="mt-2 text-sm text-slate-600">{tr.home.trust3}</p>
+          </div>
+        </div>
+
+        <div className="mt-5 rounded-xl border bg-slate-50 px-4 py-3 text-xs text-slate-600">
+          {tr.common.noteCoordination}
         </div>
       </section>
 
@@ -228,6 +257,33 @@ export default function HomeSections({ locale }: { locale: Locale }) {
             desc={tr.home.cat4d}
             href={commanderHref}
           />
+        </div>
+      </section>
+
+      {/* =========================
+          ✅ QUICK WIN #2 — WHY US
+      ========================== */}
+      <section className="border-t bg-slate-50">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <div className="rounded-2xl border bg-white p-6 md:p-8">
+            <h2 className="text-2xl font-semibold tracking-tight">
+              {tr.home.whyTitle}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-600">
+              {tr.home.whyIntro}
+            </p>
+
+            <ul className="mt-6 grid gap-3 md:grid-cols-2 text-sm text-slate-700">
+              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why1}</li>
+              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why2}</li>
+              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why3}</li>
+              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why4}</li>
+            </ul>
+
+            <div className="mt-6 rounded-xl border bg-slate-50 px-4 py-3 text-xs text-slate-600">
+              {tr.common.noteCoordination}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -292,9 +348,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               href={`/${locale}/sefer-torah`}
               title={isHebrew ? "ספר תורה" : "Séfer Torah"}
               desc={
-                isHebrew
-                  ? "כתיבה/בדיקה/תיקון/הגהה."
-                  : "Écriture, vérification, réparations, haga’a."
+                isHebrew ? "כתיבה/בדיקה/תיקון/הגהה." : "Écriture, vérification, réparations, haga’a."
               }
             />
           </div>
@@ -389,6 +443,23 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               title={tr.home.step3t}
               desc={tr.home.step3d}
             />
+          </div>
+
+          {/* ✅ Quick Win #4 + #6 : Delays + Examples */}
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold">{tr.common.delaysTitle}</div>
+              <p className="mt-2 text-sm text-slate-600">{tr.common.delaysText}</p>
+            </div>
+
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold">{tr.common.examplesTitle}</div>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                <li>• {tr.common.examples1}</li>
+                <li>• {tr.common.examples2}</li>
+                <li>• {tr.common.examples3}</li>
+              </ul>
+            </div>
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -568,9 +639,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               </Link>
             </div>
 
-            <p className="mt-4 text-xs text-slate-500">
-              {isHebrew ? "ללא תשלום בשלב זה" : "Aucun paiement à ce stade"}
-            </p>
+            <p className="mt-4 text-xs text-slate-500">{tr.common.noPayment}</p>
           </div>
         </div>
       </section>

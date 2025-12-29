@@ -1,3 +1,5 @@
+// app/[locale]/_i18n.ts
+
 export const locales = ["fr", "he"] as const;
 export type Locale = (typeof locales)[number];
 
@@ -37,6 +39,24 @@ export const dict = {
         "Sofrout en Israël — STaM (Sefer Torah, Téfilines, Mézouzot) & écritures sur parchemin • Netanya, Jérusalem, Beit Shemesh",
     },
 
+    common: {
+      noPayment: "Aucun paiement à ce stade.",
+      photosAfter:
+        "Vous pouvez envoyer des photos sur WhatsApp juste après la demande.",
+      noteCoordination:
+        "Merkaz HaSTaM est un centre de coordination. Le travail est réalisé par un sofer qualifié (selon disponibilité).",
+      delaysTitle: "Délais de traitement",
+      delaysText:
+        "Les demandes sont généralement traitées dans un délai de 24 à 72 heures ouvrées, selon le service et la charge en cours. Des urgences peuvent être envisagées selon disponibilité. Vous êtes informé clairement avant toute prise en charge.",
+      examplesTitle: "Exemples de situations traitées",
+      examples1:
+        "Mézouzot présentant des lettres affaiblies détectées lors d’une vérification.",
+      examples2:
+        "Téfilines nécessitant un contrôle approfondi avant une décision.",
+      examples3:
+        "Séfer Torah : orientation et coordination après constat d’un besoin de suivi.",
+    },
+
     home: {
       badge: "Demande en ligne (30 sec) — aucun paiement pour l’instant",
 
@@ -48,12 +68,22 @@ export const dict = {
         "Décrivez votre besoin en 30 secondes → nous coordonnons la demande et vous recevez une réponse claire. Service disponible notamment à Netanya, Jérusalem et Beit Shemesh.",
 
       trustTitle: "Clair, sérieux, sans pression",
+      // ✅ Quick Win #1 (badges confiance)
       trust1:
-        "Sofrim qualifiés : vérification / écriture réalisées par un sofer compétent (selon disponibilité).",
+        "Contrôle halakhique rigoureux : vérification/écriture selon des règles strictes et un travail soigné.",
       trust2:
-        "Transparence : vous recevez une estimation et des options claires avant toute décision.",
+        "Devis clair avant toute action : estimation transparente et options proposées avant décision.",
       trust3:
-        "Accompagnement respectueux : vous êtes guidé sans jugement, étape par étape.",
+        "Discrétion & coordination professionnelle : confidentialité et suivi sérieux du dossier.",
+
+      // ✅ Quick Win #2 (Pourquoi)
+      whyTitle: "Pourquoi passer par Merkaz HaSTaM ?",
+      whyIntro:
+        "Merkaz HaSTaM n’est ni un simple intermédiaire, ni une vente automatique. Nous assurons un cadre halakhique clair, une coordination sérieuse et un suivi structuré.",
+      why1: "Sélection et coordination avec des sofrim qualifiés (selon disponibilité).",
+      why2: "Communication claire : estimation, délais et options avant décision.",
+      why3: "Accompagnement respectueux, sans pression commerciale.",
+      why4: "Confidentialité : informations traitées de manière interne et discrète.",
 
       stepsTitle: "Comment ça marche",
       step1t: "1) Vous décrivez votre besoin",
@@ -113,6 +143,11 @@ export const dict = {
       halakhic4:
         "Sofrim diplômés et expérimentés : nous privilégions des professionnels avec expérience (selon disponibilité).",
 
+      // ✅ Quick Win #4
+      delaysTitle: "Délais & urgences",
+      delaysText:
+        "Les demandes sont généralement traitées dans un délai de 24 à 72 heures ouvrées, selon le service et la charge en cours. Des urgences peuvent être envisagées selon disponibilité. Vous êtes informé clairement avant toute prise en charge.",
+
       formTitle: "Votre demande",
       formSubtitle:
         "Choisissez une catégorie et décrivez votre besoin. Le formulaire ouvre WhatsApp avec un message pré-rempli.",
@@ -129,6 +164,24 @@ export const dict = {
         "Oui, ce sont des zones où nous avons une activité. Et nous traitons aussi les demandes ailleurs en Israël selon disponibilité.",
 
       ctaSticky: "Aller au formulaire",
+    },
+
+    services: {
+      // ✅ Quick Win #4 + #6 (utilisés dans la page services)
+      whatYouGetTitle: "Ce que vous recevez",
+      whatYouGet1: "Un cadrage clair de votre demande (catégorie, ville, urgence).",
+      whatYouGet2: "Une réponse structurée : estimation, délais, options.",
+      whatYouGet3: "Si nécessaire : coordination du suivi (vérification / réparation / écriture).",
+      delaysTitle: "Délais & urgences",
+      delaysText:
+        "Traitement typique sous 24 à 72 heures ouvrées (selon service et charge). Urgences possibles selon disponibilité.",
+      examplesTitle: "Exemples de situations traitées",
+      examples1:
+        "Mézouzot : diagnostic avant décision de réparation ou remplacement.",
+      examples2:
+        "Téfilines : contrôle avant restauration ou recommandation.",
+      examples3:
+        "Séfer Torah : orientation, estimation et coordination selon le besoin.",
     },
   },
 
@@ -163,6 +216,20 @@ export const dict = {
         "סופרות בישראל — סת״ם (ספר תורה, תפילין, מזוזות) וכתיבה על קלף • נתניה, ירושלים, בית שמש",
     },
 
+    common: {
+      noPayment: "אין תשלום בשלב זה.",
+      photosAfter: "אפשר לשלוח תמונות בוואטסאפ מיד אחרי שליחת הבקשה.",
+      noteCoordination:
+        "מרכזהסת״ם הוא מרכז תיאום. העבודה בפועל מתבצעת ע״י סופר מוסמך (בהתאם לזמינות).",
+      delaysTitle: "זמני טיפול",
+      delaysText:
+        "ברוב המקרים הטיפול מתבצע תוך 24–72 שעות עבודה, בהתאם לסוג השירות ולעומס. טיפול דחוף אפשרי בהתאם לזמינות. תקבלו עדכון ברור לפני כל טיפול.",
+      examplesTitle: "דוגמאות למצבים שטופלו",
+      examples1: "מזוזות עם אותיות חלשות שאותרו בבדיקה.",
+      examples2: "תפילין שדורשות בדיקה מעמיקה לפני החלטה.",
+      examples3: "ספר תורה: הכוונה ותיאום לפי הצורך.",
+    },
+
     home: {
       badge: "בקשה אונליין (30 שנ׳) — ללא תשלום בשלב זה",
 
@@ -174,10 +241,19 @@ export const dict = {
         "ממלאים 30 שניות → אנחנו מתאמים את הבקשה → מקבלים מענה ברור. השירות פעיל במיוחד בנתניה, ירושלים ובית שמש.",
 
       trustTitle: "ברור, רציני, בלי לחץ",
-      trust1:
-        "סופרים מוסמכים: בדיקה/כתיבה ע״י סופר מקצועי (בהתאם לזמינות).",
-      trust2: "שקיפות: מקבלים הערכה ואפשרויות ברורות לפני שמחליטים.",
-      trust3: "ליווי מכבד: הכוונה שלב-אחר-שלב, בלי שיפוט ובלי לחץ.",
+      // ✅ Quick Win #1 (badges confiance)
+      trust1: "בדיקה הלכתית מחמירה: עבודה מוקפדת לפי כללי הסת״ם.",
+      trust2: "שקיפות לפני כל פעולה: הערכה ואפשרויות ברורות לפני החלטה.",
+      trust3: "דיסקרטיות ותיאום מקצועי: סודיות מלאה ומעקב מסודר.",
+
+      // ✅ Quick Win #2 (Pourquoi)
+      whyTitle: "למה דרך מרכז הסת״ם?",
+      whyIntro:
+        "מרכזהסת״ם אינו “מכירה אוטומטית” ואינו רק תיווך. אנו מספקים מסגרת הלכתית ברורה, תיאום רציני ומעקב מסודר.",
+      why1: "תיאום עם סופרים מוסמכים (בהתאם לזמינות).",
+      why2: "הסבר ברור: הערכה, זמני טיפול ואפשרויות לפני החלטה.",
+      why3: "ליווי מכבד בלי לחץ מסחרי.",
+      why4: "דיסקרטיות: מידע נשמר פנימי ובאחריות.",
 
       stepsTitle: "איך זה עובד",
       step1t: "1) מתארים את הצורך",
@@ -232,6 +308,11 @@ export const dict = {
       halakhic4:
         "סופרים מוסמכים ובעלי ניסיון: אנחנו מעדיפים בעלי מקצוע עם ניסיון (בהתאם לזמינות).",
 
+      // ✅ Quick Win #4
+      delaysTitle: "זמנים ודחיפות",
+      delaysText:
+        "בדרך כלל הטיפול תוך 24–72 שעות עבודה (לפי השירות והעומס). טיפול דחוף אפשרי בהתאם לזמינות. תקבלו עדכון ברור לפני כל טיפול.",
+
       formTitle: "הבקשה שלכם",
       formSubtitle:
         "בחרו קטגוריה ותארו את הצורך. הטופס יפתח וואטסאפ עם הודעה מוכנה.",
@@ -245,6 +326,20 @@ export const dict = {
       faq3a: "כן, אלו אזורים שבהם יש פעילות. ובשאר הארץ — בהתאם לזמינות.",
 
       ctaSticky: "לטופס",
+    },
+
+    services: {
+      whatYouGetTitle: "מה מקבלים",
+      whatYouGet1: "מיקוד הבקשה (קטגוריה, עיר, דחיפות).",
+      whatYouGet2: "מענה מסודר: הערכה, זמני טיפול ואפשרויות.",
+      whatYouGet3: "אם צריך: תיאום המשך (בדיקה / תיקון / כתיבה).",
+      delaysTitle: "זמנים ודחיפות",
+      delaysText:
+        "טיפול טיפוסי תוך 24–72 שעות עבודה (לפי שירות ועומס). דחוף — בהתאם לזמינות.",
+      examplesTitle: "דוגמאות למצבים",
+      examples1: "מזוזות: אבחון לפני החלטה על תיקון/החלפה.",
+      examples2: "תפילין: בדיקה לפני תיקון או המלצה.",
+      examples3: "ספר תורה: הכוונה והערכת מצב לפי הצורך.",
     },
   },
 } as const;

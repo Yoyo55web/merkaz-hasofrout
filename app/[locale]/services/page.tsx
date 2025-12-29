@@ -1,6 +1,6 @@
 // app/[locale]/services/page.tsx
 import Link from "next/link";
-import { isLocale, type Locale } from "../_i18n";
+import { isLocale, t, type Locale } from "../_i18n";
 import { buildMetadata } from "../_seo/metadata";
 import SeoJsonLd from "../_seo/SeoJsonLd";
 
@@ -31,6 +31,7 @@ export default async function Page({
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "fr";
   const isHebrew = locale === "he";
+  const tr = t(locale);
 
   const items = [
     {
@@ -105,14 +106,43 @@ export default async function Page({
 
           <p className="mt-3 text-xs text-slate-500">
             {isHebrew
-              ? "אין תשלום בשלב זה. אפשר לצרף תמונות בוואטסאפ אחרי שליחת הבקשה."
-              : "Aucun paiement à ce stade. Vous pouvez envoyer des photos sur WhatsApp juste après la demande."}
+              ? `${tr.common.noPayment} ${tr.common.photosAfter}`
+              : `${tr.common.noPayment} ${tr.common.photosAfter}`}
           </p>
         </div>
       </section>
 
+      {/* TOP INFO BLOCKS (✅ Quick Win #4 + #6) */}
+      <section className="mx-auto max-w-5xl px-5 py-10 space-y-4">
+        {/* What you get */}
+        <div className="rounded-2xl border bg-white p-6">
+          <div className="text-lg font-semibold">{tr.services.whatYouGetTitle}</div>
+          <ul className="mt-3 space-y-2 text-sm text-slate-700">
+            <li>• {tr.services.whatYouGet1}</li>
+            <li>• {tr.services.whatYouGet2}</li>
+            <li>• {tr.services.whatYouGet3}</li>
+          </ul>
+        </div>
+
+        {/* Delays */}
+        <div className="rounded-2xl border bg-slate-50 p-6">
+          <div className="font-semibold">{tr.services.delaysTitle}</div>
+          <p className="mt-2 text-sm text-slate-600">{tr.services.delaysText}</p>
+        </div>
+
+        {/* Examples */}
+        <div className="rounded-2xl border bg-white p-6">
+          <div className="font-semibold">{tr.services.examplesTitle}</div>
+          <ul className="mt-3 space-y-2 text-sm text-slate-700">
+            <li>• {tr.services.examples1}</li>
+            <li>• {tr.services.examples2}</li>
+            <li>• {tr.services.examples3}</li>
+          </ul>
+        </div>
+      </section>
+
       {/* GRID */}
-      <section className="mx-auto max-w-5xl px-5 py-12">
+      <section className="mx-auto max-w-5xl px-5 pb-12">
         <div className="grid gap-4 sm:grid-cols-2">
           {items.map((it) => (
             <Link
@@ -140,12 +170,10 @@ export default async function Page({
 
         {/* FOOTNOTE */}
         <div className="mt-10 rounded-2xl border bg-slate-50 p-5 text-sm text-slate-700">
-          <div className="font-semibold">{isHebrew ? "הערה חשובה" : "Note importante"}</div>
-          <p className="mt-1 text-slate-600">
-            {isHebrew
-              ? "מרכזהסת״ם הוא מרכז תיאום. הבדיקה/כתיבה מתבצעת ע״י סופר מוסמך (בהתאם לזמינות)."
-              : "Merkaz HaSTaM est un centre de coordination. La vérification/écriture est réalisée par un sofer qualifié (selon disponibilité)."}
-          </p>
+          <div className="font-semibold">
+            {isHebrew ? "הערה חשובה" : "Note importante"}
+          </div>
+          <p className="mt-1 text-slate-600">{tr.common.noteCoordination}</p>
         </div>
       </section>
     </main>
