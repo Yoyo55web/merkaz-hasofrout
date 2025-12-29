@@ -12,7 +12,10 @@ export default function HomeSections({ locale }: { locale: Locale }) {
   const servicesHref = `/${locale}/services`;
 
   return (
-    <main className="min-h-screen bg-white text-slate-900" dir={isHebrew ? "rtl" : "ltr"}>
+    <main
+      className="min-h-screen bg-white text-slate-900"
+      dir={isHebrew ? "rtl" : "ltr"}
+    >
       {/* =========================
           HERO (visuel premium + CTA)
       ========================== */}
@@ -177,20 +180,23 @@ export default function HomeSections({ locale }: { locale: Locale }) {
 
       {/* =========================
           ✅ QUICK WIN #1 — TRUST BADGES (version “pro”)
-          (3 cartes claires / au-dessus de la conversion)
       ========================== */}
       <section className="mx-auto max-w-6xl px-5 py-10">
         <div className="grid gap-4 md:grid-cols-3">
           <div className="rounded-2xl border bg-white p-6">
             <div className="text-sm font-semibold text-slate-900">
-              {isHebrew ? "בדיקה הלכתית מחמירה" : "Contrôle halakhique rigoureux"}
+              {isHebrew
+                ? "בדיקה הלכתית מחמירה"
+                : "Contrôle halakhique rigoureux"}
             </div>
             <p className="mt-2 text-sm text-slate-600">{tr.home.trust1}</p>
           </div>
 
           <div className="rounded-2xl border bg-white p-6">
             <div className="text-sm font-semibold text-slate-900">
-              {isHebrew ? "שקיפות לפני כל פעולה" : "Devis clair avant toute action"}
+              {isHebrew
+                ? "שקיפות לפני כל פעולה"
+                : "Devis clair avant toute action"}
             </div>
             <p className="mt-2 text-sm text-slate-600">{tr.home.trust2}</p>
           </div>
@@ -273,7 +279,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               {tr.home.whyIntro}
             </p>
 
-            <ul className="mt-6 grid gap-3 md:grid-cols-2 text-sm text-slate-700">
+            <ul className="mt-6 grid gap-3 text-sm text-slate-700 md:grid-cols-2">
               <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why1}</li>
               <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why2}</li>
               <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why3}</li>
@@ -288,7 +294,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       </section>
 
       {/* =========================
-          ✅ SERVICES (NEW) — lien direct depuis l’accueil
+          ✅ SERVICES — lien direct depuis l’accueil
       ========================== */}
       <section className="border-t bg-slate-50">
         <div className="mx-auto max-w-6xl px-5 py-12">
@@ -348,7 +354,9 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               href={`/${locale}/sefer-torah`}
               title={isHebrew ? "ספר תורה" : "Séfer Torah"}
               desc={
-                isHebrew ? "כתיבה/בדיקה/תיקון/הגהה." : "Écriture, vérification, réparations, haga’a."
+                isHebrew
+                  ? "כתיבה/בדיקה/תיקון/הגהה."
+                  : "Écriture, vérification, réparations, haga’a."
               }
             />
           </div>
@@ -383,7 +391,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   ? "דרישה הלכתית ללא פשרות"
                   : "Une exigence halakhique sans compromis"}
               </h2>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {isHebrew
                   ? "תפילין נכתבים ונבדקים בקפדנות — צורת הבתים, כתיבה, תגים, יישור ובקרת איכות — כדי שתקבלו מענה ברור ושקט נפשי."
                   : "Chaque travail est suivi avec rigueur : forme des batim, écriture, taguim, alignement et contrôles — pour une réponse claire et une tranquillité d’esprit."}
@@ -480,12 +488,77 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       </section>
 
       {/* =========================
+          ✅ QUICK WIN #7 — FAQ (HOME)
+      ========================== */}
+      <section className="border-t">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            {tr.home.faqTitle}
+          </h2>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold">{tr.home.faq1q}</div>
+              <p className="mt-2 text-sm text-slate-600">{tr.home.faq1a}</p>
+            </div>
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold">{tr.home.faq2q}</div>
+              <p className="mt-2 text-sm text-slate-600">{tr.home.faq2a}</p>
+            </div>
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold">{tr.home.faq3q}</div>
+              <p className="mt-2 text-sm text-slate-600">{tr.home.faq3a}</p>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <Link
+              href={commanderHref}
+              className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
+            >
+              {isHebrew ? "שליחת בקשה (30 שנ׳)" : "Faire une demande (30 sec)"}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================
+          ✅ QUICK WIN #5 — TESTIMONIALS / PREUVE SOCIALE
+      ========================== */}
+      <section className="border-t bg-slate-50">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            {tr.home.testimonialsTitle}
+          </h2>
+          <p className="mt-2 text-sm text-slate-600">
+            {tr.home.testimonialsSubtitle}
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border bg-white p-6 text-sm text-slate-700">
+              {tr.home.test1}
+            </div>
+            <div className="rounded-2xl border bg-white p-6 text-sm text-slate-700">
+              {tr.home.test2}
+            </div>
+            <div className="rounded-2xl border bg-white p-6 text-sm text-slate-700">
+              {tr.home.test3}
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-xl border bg-white px-4 py-3 text-xs text-slate-600">
+            {tr.common.noteCoordination}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================
           IMAGE SECTION — Méthode (klaf fan)
       ========================== */}
       <section className="border-t">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            <div className="relative overflow-hidden rounded-2xl border bg-white shadow-sm order-2 md:order-1">
+            <div className="order-2 overflow-hidden rounded-2xl border bg-white shadow-sm md:order-1">
               <Image
                 src="/images/klaf-fan.jpg"
                 alt={isHebrew ? "כתיבה על קלף" : "Écriture sur klaf"}
@@ -501,7 +574,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   ? "עבודה אומנותית — אות אחרי אות"
                   : "Un travail artisanal, lettre après lettre"}
               </h2>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {isHebrew
                   ? "כל קלף נכתב ביד, בקדושה ובדיוק. אין קיצורי דרך — רק עבודה מסודרת, עקבית וברורה."
                   : "Chaque parchemin est écrit à la main, dans la rigueur et la constance. Pas de raccourcis : uniquement un travail propre, suivi, et clair."}
@@ -523,7 +596,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   ? "כתיבה ברורה ותואמת הלכה"
                   : "Une écriture claire et conforme à la Halakha"}
               </h2>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {isHebrew
                   ? "כתיבה אחידה וקריאה, תגים מסודרים וצורת אותיות מדויקת — כדי שתדעו בדיוק מה אתם מקבלים."
                   : "Écriture régulière, lisible, taguim soignés et forme des lettres maîtrisée — pour savoir exactement ce que vous recevez."}
@@ -643,6 +716,34 @@ export default function HomeSections({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      {/* ✅ Quick Win #7 — FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: tr.home.faq1q,
+                acceptedAnswer: { "@type": "Answer", text: tr.home.faq1a },
+              },
+              {
+                "@type": "Question",
+                name: tr.home.faq2q,
+                acceptedAnswer: { "@type": "Answer", text: tr.home.faq2a },
+              },
+              {
+                "@type": "Question",
+                name: tr.home.faq3q,
+                acceptedAnswer: { "@type": "Answer", text: tr.home.faq3a },
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Sticky CTA mobile */}
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-white p-3 md:hidden">

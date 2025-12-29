@@ -117,6 +117,14 @@ export const dict = {
       faq3a:
         "Oui. Indiquez le niveau souhaité dans la demande, et nous vous orientons vers une option adaptée (selon disponibilité).",
 
+      // ✅ Quick Win #5 — Preuve sociale
+      testimonialsTitle: "Ils nous font confiance",
+      testimonialsSubtitle:
+        "Discrétion, clarté, suivi. Voici des retours typiques que nous recevons.",
+      test1: "“Réponse rapide et claire. On a su quoi faire sans stress.”",
+      test2: "“Très sérieux, on sent le cadre halakhique et le suivi.”",
+      test3: "“Coordination facile, estimation claire avant toute décision.”",
+
       finalCtaTitle: "Vous voulez une réponse rapide et sérieuse ?",
       finalCtaText:
         "Cliquez sur “Faire une demande”, remplissez le formulaire (30 sec), et recevez une réponse claire.",
@@ -171,7 +179,8 @@ export const dict = {
       whatYouGetTitle: "Ce que vous recevez",
       whatYouGet1: "Un cadrage clair de votre demande (catégorie, ville, urgence).",
       whatYouGet2: "Une réponse structurée : estimation, délais, options.",
-      whatYouGet3: "Si nécessaire : coordination du suivi (vérification / réparation / écriture).",
+      whatYouGet3:
+        "Si nécessaire : coordination du suivi (vérification / réparation / écriture).",
       delaysTitle: "Délais & urgences",
       delaysText:
         "Traitement typique sous 24 à 72 heures ouvrées (selon service et charge). Urgences possibles selon disponibilité.",
@@ -241,12 +250,12 @@ export const dict = {
         "ממלאים 30 שניות → אנחנו מתאמים את הבקשה → מקבלים מענה ברור. השירות פעיל במיוחד בנתניה, ירושלים ובית שמש.",
 
       trustTitle: "ברור, רציני, בלי לחץ",
-      // ✅ Quick Win #1 (badges confiance)
+      // ✅ Quick Win #1
       trust1: "בדיקה הלכתית מחמירה: עבודה מוקפדת לפי כללי הסת״ם.",
       trust2: "שקיפות לפני כל פעולה: הערכה ואפשרויות ברורות לפני החלטה.",
       trust3: "דיסקרטיות ותיאום מקצועי: סודיות מלאה ומעקב מסודר.",
 
-      // ✅ Quick Win #2 (Pourquoi)
+      // ✅ Quick Win #2
       whyTitle: "למה דרך מרכז הסת״ם?",
       whyIntro:
         "מרכזהסת״ם אינו “מכירה אוטומטית” ואינו רק תיווך. אנו מספקים מסגרת הלכתית ברורה, תיאום רציני ומעקב מסודר.",
@@ -284,6 +293,14 @@ export const dict = {
       faq3q: "אני רוצה מהודר / מחמיר מאוד — אפשר?",
       faq3a:
         "כן. ציינו את הרמה בבקשה ונכוון לפתרון מתאים (בהתאם לזמינות).",
+
+      // ✅ Quick Win #5 — Preuve sociale
+      testimonialsTitle: "לקוחות מספרים",
+      testimonialsSubtitle:
+        "דיסקרטיות, בהירות ומעקב. אלו דוגמאות למשובים אופייניים.",
+      test1: "“מענה מהיר וברור. ידענו בדיוק מה לעשות.”",
+      test2: "“רצינות והקפדה הלכתית. הרגשנו בידיים טובות.”",
+      test3: "“תיאום קל והערכה ברורה לפני כל החלטה.”",
 
       finalCtaTitle: "רוצים מענה מהיר וברור?",
       finalCtaText:
