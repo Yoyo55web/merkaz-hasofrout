@@ -1,4 +1,3 @@
-// app/[locale]/_components/HomeSections.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { t, type Locale } from "../_i18n";
@@ -17,7 +16,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       dir={isHebrew ? "rtl" : "ltr"}
     >
       {/* =========================
-          HERO (visuel premium + CTA)
+          HERO
       ========================== */}
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0">
@@ -48,63 +47,6 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               </p>
 
               <p className="mt-4 text-sm text-slate-500">{tr.home.micro}</p>
-
-              {/* Micro-copy halakhique */}
-              <div className="mt-5 text-xs text-slate-600">
-                {isHebrew ? (
-                  <span>
-                    <span className="font-semibold text-slate-900">
-                      מסגרת הלכתית:
-                    </span>{" "}
-                    בדיקה/כתיבה ע״י סופר מקצועי (בהתאם לזמינות) • דיסקרטיות מלאה
-                  </span>
-                ) : (
-                  <span>
-                    <span className="font-semibold text-slate-900">
-                      Cadre halakhique :
-                    </span>{" "}
-                    vérification/écriture par un sofer compétent (selon
-                    disponibilité) • discrétion totale
-                  </span>
-                )}
-              </div>
-
-              {/* CTA */}
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href={commanderHref}
-                  className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
-                >
-                  {tr.cta.commanderOnline}
-                </Link>
-
-                <a
-                  href="#categories"
-                  className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  {tr.cta.goToForm}
-                </a>
-
-                <Link
-                  href={servicesHref}
-                  className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  {isHebrew ? "שירותים" : "Services"}
-                </Link>
-              </div>
-
-              {/* Micro trust badges (pictos) */}
-              <div className="mt-7 grid grid-cols-2 gap-2 text-xs text-slate-600 sm:grid-cols-3">
-                <div className="rounded-xl border bg-white/80 px-3 py-2">
-                  {isHebrew ? "מסגרת הלכתית" : "Cadre halakhique"}
-                </div>
-                <div className="rounded-xl border bg-white/80 px-3 py-2">
-                  {isHebrew ? "סופרים מוסמכים" : "Sofrim diplômés"}
-                </div>
-                <div className="rounded-xl border bg-white/80 px-3 py-2">
-                  {isHebrew ? "דיסקרטיות" : "Discrétion"}
-                </div>
-              </div>
 
               {/* Clarifier STaM */}
               <div className="mt-4 text-xs text-slate-500">
@@ -143,23 +85,24 @@ export default function HomeSections({ locale }: { locale: Locale }) {
 
               <div className="mt-6 grid gap-2">
                 <a
-                  href="#steps"
+                  href="#categories"
                   className="group rounded-xl border bg-white px-4 py-3 text-left hover:bg-slate-50"
                 >
                   <div className="text-xs font-semibold text-slate-500">
-                    {isHebrew ? "איך זה עובד" : "Comment ça marche"}
+                    {isHebrew ? "בחירת קטגוריה" : "Choisir une catégorie"}
                   </div>
                   <div className="mt-1 text-sm font-semibold text-slate-900">
-                    {isHebrew ? "3 שלבים פשוטים" : "3 étapes simples"}{" "}
+                    {isHebrew ? "לראות קטגוריות" : "Voir les catégories"}{" "}
                     <span className="text-slate-500 group-hover:text-slate-700">
                       →
                     </span>
                   </div>
                 </a>
 
+                {/* ✅ CHANGÉ : noir -> vert emerald */}
                 <Link
                   href={commanderHref}
-                  className="rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
+                  className="rounded-xl bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-700"
                 >
                   {isHebrew ? "להתחיל עכשיו" : "Démarrer maintenant"}
                 </Link>
@@ -168,7 +111,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
                   href={servicesHref}
                   className="rounded-xl border bg-white px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
                 >
-                  {isHebrew ? "לכל השירותים" : "Voir tous les services"}
+                  {isHebrew ? "לשירותים" : "Voir les services"}
                 </Link>
               </div>
 
@@ -179,95 +122,133 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       </section>
 
       {/* =========================
-          ✅ QUICK WIN #1 — TRUST BADGES (version “pro”)
+          CATEGORIES (blanc)
       ========================== */}
-      <section className="mx-auto max-w-6xl px-5 py-10">
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border bg-white p-6">
-            <div className="text-sm font-semibold text-slate-900">
-              {isHebrew
-                ? "בדיקה הלכתית מחמירה"
-                : "Contrôle halakhique rigoureux"}
+      <section id="categories" className="border-t bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                {tr.home.categoriesTitle}
+              </h2>
+              <p className="mt-2 text-sm text-slate-600">
+                {isHebrew
+                  ? "בחר קטגוריה והמשך לטופס קצר."
+                  : "Choisissez une catégorie puis passez au formulaire."}
+              </p>
             </div>
-            <p className="mt-2 text-sm text-slate-600">{tr.home.trust1}</p>
           </div>
 
-          <div className="rounded-2xl border bg-white p-6">
-            <div className="text-sm font-semibold text-slate-900">
-              {isHebrew
-                ? "שקיפות לפני כל פעולה"
-                : "Devis clair avant toute action"}
-            </div>
-            <p className="mt-2 text-sm text-slate-600">{tr.home.trust2}</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <CategoryCard
+              locale={locale}
+              title={tr.home.cat1t}
+              desc={tr.home.cat1d}
+              href={commanderHref}
+            />
+            <CategoryCard
+              locale={locale}
+              title={tr.home.cat2t}
+              desc={tr.home.cat2d}
+              href={commanderHref}
+            />
+            <CategoryCard
+              locale={locale}
+              title={tr.home.cat3t}
+              desc={tr.home.cat3d}
+              href={commanderHref}
+            />
+            <CategoryCard
+              locale={locale}
+              title={tr.home.cat4t}
+              desc={tr.home.cat4d}
+              href={commanderHref}
+            />
           </div>
-
-          <div className="rounded-2xl border bg-white p-6">
-            <div className="text-sm font-semibold text-slate-900">
-              {isHebrew ? "דיסקרטיות ותיאום מקצועי" : "Discrétion & coordination"}
-            </div>
-            <p className="mt-2 text-sm text-slate-600">{tr.home.trust3}</p>
-          </div>
-        </div>
-
-        <div className="mt-5 rounded-xl border bg-slate-50 px-4 py-3 text-xs text-slate-600">
-          {tr.common.noteCoordination}
         </div>
       </section>
 
       {/* =========================
-          CATEGORIES (conversion)
+          HOW IT WORKS (slate-50)
       ========================== */}
-      <section id="categories" className="mx-auto max-w-6xl px-5 py-12">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">
-              {tr.home.categoriesTitle}
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              {isHebrew
-                ? "בחר קטגוריה והמשך לטופס קצר."
-                : "Choisissez une catégorie puis passez au formulaire."}
-            </p>
+      <section id="steps" className="border-t bg-slate-50">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            {tr.home.stepsTitle}
+          </h2>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <StepCard
+              label={isHebrew ? "שלב 1" : "ÉTAPE 1"}
+              title={tr.home.step1t}
+              desc={tr.home.step1d}
+            />
+            <StepCard
+              label={isHebrew ? "שלב 2" : "ÉTAPE 2"}
+              title={tr.home.step2t}
+              desc={tr.home.step2d}
+            />
+            <StepCard
+              label={isHebrew ? "שלב 3" : "ÉTAPE 3"}
+              title={tr.home.step3t}
+              desc={tr.home.step3d}
+            />
           </div>
 
-          <Link
-            href={commanderHref}
-            className="hidden rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 md:inline-flex"
-          >
-            {tr.cta.start}
-          </Link>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <CategoryCard
-            locale={locale}
-            title={tr.home.cat1t}
-            desc={tr.home.cat1d}
-            href={commanderHref}
-          />
-          <CategoryCard
-            locale={locale}
-            title={tr.home.cat2t}
-            desc={tr.home.cat2d}
-            href={commanderHref}
-          />
-          <CategoryCard
-            locale={locale}
-            title={tr.home.cat3t}
-            desc={tr.home.cat3d}
-            href={commanderHref}
-          />
-          <CategoryCard
-            locale={locale}
-            title={tr.home.cat4t}
-            desc={tr.home.cat4d}
-            href={commanderHref}
-          />
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href={commanderHref}
+              className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
+            >
+              {tr.cta.commanderOnline}
+            </Link>
+            <Link
+              href={enSavoirPlusHref}
+              className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+            >
+              {isHebrew ? "שאלות נפוצות" : "FAQ & détails"}
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* =========================
-          ✅ QUICK WIN #2 — WHY US
+          IMAGE — Exigence halakhique (blanc)
+          ✅ boutons supprimés
+      ========================== */}
+      <section className="border-t bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                {isHebrew
+                  ? "דרישה הלכתית ללא פשרות"
+                  : "Une exigence halakhique sans compromis"}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                {isHebrew
+                  ? "תפילין נכתבים ונבדקים בקפדנות — צורת הבתים, כתיבה, תגים, יישור ובקרת איכות — כדי שתקבלו מענה ברור ושקט נפשי."
+                  : "Chaque travail est suivi avec rigueur : forme des batim, écriture, taguim, alignement et contrôles — pour une réponse claire et une tranquillité d’esprit."}
+              </p>
+
+              {/* Boutons supprimés ici (redondants) */}
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl border bg-white shadow-sm">
+              <Image
+                src="/images/batim-angle.jpg"
+                alt={isHebrew ? "תפילין — בתים" : "Téfilines — batim"}
+                width={1400}
+                height={1000}
+                className="h-auto w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================
+          WHY US (slate-50)
       ========================== */}
       <section className="border-t bg-slate-50">
         <div className="mx-auto max-w-6xl px-5 py-12">
@@ -280,23 +261,36 @@ export default function HomeSections({ locale }: { locale: Locale }) {
             </p>
 
             <ul className="mt-6 grid gap-3 text-sm text-slate-700 md:grid-cols-2">
-              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why1}</li>
-              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why2}</li>
-              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why3}</li>
-              <li className="rounded-xl border bg-slate-50 p-4">• {tr.home.why4}</li>
+              {tr.home.why1 ? (
+                <li className="rounded-xl border bg-slate-50 p-4">
+                  • {tr.home.why1}
+                </li>
+              ) : null}
+              {tr.home.why2 ? (
+                <li className="rounded-xl border bg-slate-50 p-4">
+                  • {tr.home.why2}
+                </li>
+              ) : null}
+              {tr.home.why3 ? (
+                <li className="rounded-xl border bg-slate-50 p-4">
+                  • {tr.home.why3}
+                </li>
+              ) : null}
+              {tr.home.why4 ? (
+                <li className="rounded-xl border bg-slate-50 p-4">
+                  • {tr.home.why4}
+                </li>
+              ) : null}
             </ul>
-
-            <div className="mt-6 rounded-xl border bg-slate-50 px-4 py-3 text-xs text-slate-600">
-              {tr.common.noteCoordination}
-            </div>
           </div>
         </div>
       </section>
 
       {/* =========================
-          ✅ SERVICES — lien direct depuis l’accueil
+          SERVICES (blanc)
+          ✅ suppression du bouton “Tous les services →”
       ========================== */}
-      <section className="border-t bg-slate-50">
+      <section className="border-t bg-white">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -310,12 +304,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               </p>
             </div>
 
-            <Link
-              href={servicesHref}
-              className="hidden rounded-xl border bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 md:inline-flex"
-            >
-              {isHebrew ? "לכל השירותים →" : "Tous les services →"}
-            </Link>
+            {/* Bouton “Tous les services →” supprimé (répétition) */}
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -361,136 +350,22 @@ export default function HomeSections({ locale }: { locale: Locale }) {
             />
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          {/* On garde un seul bouton (voir tous les services) */}
+          <div className="mt-8">
             <Link
               href={servicesHref}
               className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
             >
               {isHebrew ? "לכל השירותים" : "Voir tous les services"}
             </Link>
-
-            <Link
-              href={commanderHref}
-              className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              {isHebrew ? "שליחת בקשה (30 שנ׳)" : "Faire une demande (30 sec)"}
-            </Link>
           </div>
         </div>
       </section>
 
       {/* =========================
-          IMAGE SECTION — Exigence halakhique (batim)
+          FAQ (slate-50)
       ========================== */}
-      <section className="border-t">
-        <div className="mx-auto max-w-6xl px-5 py-12">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">
-                {isHebrew
-                  ? "דרישה הלכתית ללא פשרות"
-                  : "Une exigence halakhique sans compromis"}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                {isHebrew
-                  ? "תפילין נכתבים ונבדקים בקפדנות — צורת הבתים, כתיבה, תגים, יישור ובקרת איכות — כדי שתקבלו מענה ברור ושקט נפשי."
-                  : "Chaque travail est suivi avec rigueur : forme des batim, écriture, taguim, alignement et contrôles — pour une réponse claire et une tranquillité d’esprit."}
-              </p>
-
-              <div className="mt-6 flex gap-3">
-                <Link
-                  href={commanderHref}
-                  className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-                >
-                  {isHebrew ? "שליחת בקשה" : "Faire une demande"}
-                </Link>
-                <Link
-                  href={enSavoirPlusHref}
-                  className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  {isHebrew ? "לפרטים" : "Voir les détails"}
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl border bg-white shadow-sm">
-              <Image
-                src="/images/batim-angle.jpg"
-                alt={isHebrew ? "תפילין — בתים" : "Téfilines — batim"}
-                width={1400}
-                height={1000}
-                className="h-auto w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================
-          HOW IT WORKS (conversion)
-      ========================== */}
-      <section id="steps" className="border-t bg-slate-50">
-        <div className="mx-auto max-w-6xl px-5 py-12">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            {tr.home.stepsTitle}
-          </h2>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <StepCard
-              label={isHebrew ? "שלב 1" : "ÉTAPE 1"}
-              title={tr.home.step1t}
-              desc={tr.home.step1d}
-            />
-            <StepCard
-              label={isHebrew ? "שלב 2" : "ÉTAPE 2"}
-              title={tr.home.step2t}
-              desc={tr.home.step2d}
-            />
-            <StepCard
-              label={isHebrew ? "שלב 3" : "ÉTAPE 3"}
-              title={tr.home.step3t}
-              desc={tr.home.step3d}
-            />
-          </div>
-
-          {/* ✅ Quick Win #4 + #6 : Delays + Examples */}
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border bg-white p-6">
-              <div className="text-sm font-semibold">{tr.common.delaysTitle}</div>
-              <p className="mt-2 text-sm text-slate-600">{tr.common.delaysText}</p>
-            </div>
-
-            <div className="rounded-2xl border bg-white p-6">
-              <div className="text-sm font-semibold">{tr.common.examplesTitle}</div>
-              <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                <li>• {tr.common.examples1}</li>
-                <li>• {tr.common.examples2}</li>
-                <li>• {tr.common.examples3}</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href={commanderHref}
-              className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              {tr.cta.commanderOnline}
-            </Link>
-            <Link
-              href={enSavoirPlusHref}
-              className="inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
-            >
-              {isHebrew ? "שאלות נפוצות" : "FAQ & détails"}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================
-          ✅ QUICK WIN #7 — FAQ (HOME)
-      ========================== */}
-      <section className="border-t">
+      <section className="border-t bg-slate-50">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <h2 className="text-2xl font-semibold tracking-tight">
             {tr.home.faqTitle}
@@ -523,103 +398,9 @@ export default function HomeSections({ locale }: { locale: Locale }) {
       </section>
 
       {/* =========================
-          ✅ QUICK WIN #5 — TESTIMONIALS / PREUVE SOCIALE
+          CITIES (blanc)
       ========================== */}
-      <section className="border-t bg-slate-50">
-        <div className="mx-auto max-w-6xl px-5 py-12">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            {tr.home.testimonialsTitle}
-          </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            {tr.home.testimonialsSubtitle}
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border bg-white p-6 text-sm text-slate-700">
-              {tr.home.test1}
-            </div>
-            <div className="rounded-2xl border bg-white p-6 text-sm text-slate-700">
-              {tr.home.test2}
-            </div>
-            <div className="rounded-2xl border bg-white p-6 text-sm text-slate-700">
-              {tr.home.test3}
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-xl border bg-white px-4 py-3 text-xs text-slate-600">
-            {tr.common.noteCoordination}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================
-          IMAGE SECTION — Méthode (klaf fan)
-      ========================== */}
-      <section className="border-t">
-        <div className="mx-auto max-w-6xl px-5 py-12">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            <div className="order-2 overflow-hidden rounded-2xl border bg-white shadow-sm md:order-1">
-              <Image
-                src="/images/klaf-fan.jpg"
-                alt={isHebrew ? "כתיבה על קלף" : "Écriture sur klaf"}
-                width={1400}
-                height={1000}
-                className="h-auto w-full object-cover"
-              />
-            </div>
-
-            <div className="order-1 md:order-2">
-              <h2 className="text-2xl font-semibold tracking-tight">
-                {isHebrew
-                  ? "עבודה אומנותית — אות אחרי אות"
-                  : "Un travail artisanal, lettre après lettre"}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                {isHebrew
-                  ? "כל קלף נכתב ביד, בקדושה ובדיוק. אין קיצורי דרך — רק עבודה מסודרת, עקבית וברורה."
-                  : "Chaque parchemin est écrit à la main, dans la rigueur et la constance. Pas de raccourcis : uniquement un travail propre, suivi, et clair."}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================
-          IMAGE SECTION — Preuve (ktav)
-      ========================== */}
-      <section className="border-t bg-slate-50">
-        <div className="mx-auto max-w-6xl px-5 py-12">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">
-                {isHebrew
-                  ? "כתיבה ברורה ותואמת הלכה"
-                  : "Une écriture claire et conforme à la Halakha"}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                {isHebrew
-                  ? "כתיבה אחידה וקריאה, תגים מסודרים וצורת אותיות מדויקת — כדי שתדעו בדיוק מה אתם מקבלים."
-                  : "Écriture régulière, lisible, taguim soignés et forme des lettres maîtrisée — pour savoir exactement ce que vous recevez."}
-              </p>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl border bg-white shadow-sm">
-              <Image
-                src="/images/ktav-proof.jpg"
-                alt={isHebrew ? "דוגמת כתיבה" : "Exemple d’écriture"}
-                width={1400}
-                height={1000}
-                className="h-auto w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================
-          CITIES (SEO local)
-      ========================== */}
-      <section id="cities" className="border-t">
+      <section id="cities" className="border-t bg-white">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <h2 className="text-2xl font-semibold tracking-tight">
             {isHebrew ? "שירות פעיל בערים" : "Service actif dans ces villes"}
@@ -636,9 +417,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               href={`/${locale}/sofrout-netanya`}
               title={isHebrew ? "סופרות בנתניה" : "Sofrout à Netanya"}
               desc={
-                isHebrew
-                  ? "תיאום דיסקרטי • מענה ברור"
-                  : "Coordination discrète • réponse claire"
+                isHebrew ? "תיאום • מענה ברור" : "Coordination • réponse claire"
               }
             />
             <CityCard
@@ -655,29 +434,16 @@ export default function HomeSections({ locale }: { locale: Locale }) {
               locale={locale}
               href={`/${locale}/sofrout-beit-shemesh`}
               title={isHebrew ? "סופרות בבית שמש" : "Sofrout à Beit Shemesh"}
-              desc={
-                isHebrew
-                  ? "מסגרת הלכתית • דיסקרטיות"
-                  : "Cadre halakhique • discrétion"
-              }
+              desc={isHebrew ? "מסגרת הלכתית" : "Cadre halakhique"}
             />
-          </div>
-
-          <div className="mt-6">
-            <Link
-              href={commanderHref}
-              className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              {isHebrew ? "שליחת בקשה (30 שנ׳)" : "Faire une demande (30 sec)"}
-            </Link>
           </div>
         </div>
       </section>
 
       {/* =========================
-          FINAL CTA
+          FINAL CTA (slate-50)
       ========================== */}
-      <section className="border-t">
+      <section className="border-t bg-slate-50">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <div className="rounded-2xl border bg-white p-6">
             <h3 className="text-lg font-semibold">
@@ -686,13 +452,14 @@ export default function HomeSections({ locale }: { locale: Locale }) {
             <p className="mt-2 text-sm text-slate-600">
               {isHebrew
                 ? "שלחו בקשה קצרה — נחזור אליכם עם מענה מסודר."
-                : "Envoyez une demande courte — on vous répond de manière structurée, sans pression."}
+                : "Envoyez une demande courte — on vous répond de manière structurée."}
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              {/* ✅ CHANGÉ : noir -> vert emerald */}
               <Link
                 href={commanderHref}
-                className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+                className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
               >
                 {tr.cta.start}
               </Link>
@@ -717,7 +484,7 @@ export default function HomeSections({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* ✅ Quick Win #7 — FAQ Schema JSON-LD */}
+      {/* FAQ Schema JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -744,16 +511,6 @@ export default function HomeSections({ locale }: { locale: Locale }) {
           }),
         }}
       />
-
-      {/* Sticky CTA mobile */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-white p-3 md:hidden">
-        <Link
-          href={commanderHref}
-          className="block w-full rounded-xl bg-emerald-600 py-3 text-center text-sm font-semibold text-white"
-        >
-          {tr.home.sticky}
-        </Link>
-      </div>
     </main>
   );
 }

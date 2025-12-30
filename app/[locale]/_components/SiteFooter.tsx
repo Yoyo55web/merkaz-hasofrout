@@ -18,7 +18,7 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
             <div className="mt-1 text-sm text-slate-600">{tr.brand.tagline}</div>
           </div>
 
-          {/* Liens utiles (safe: seulement pages existantes) */}
+          {/* Liens */}
           <div>
             <div className="text-sm font-semibold text-slate-900">
               {isHebrew ? "קישורים" : "Liens"}
@@ -26,21 +26,18 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
 
             <ul className="mt-3 grid gap-2 text-sm text-slate-700">
               <li>
-                <Link className="hover:underline" href={`${base}/commander`}>
-                  {tr.nav.commander}
+                <Link className="hover:underline" href={`${base}`}>
+                  {tr.nav.home}
                 </Link>
               </li>
-
-              {/* Active uniquement si tu crées ces pages */}
-              {/*
               <li>
                 <Link className="hover:underline" href={`${base}/services`}>
                   {tr.nav.services}
                 </Link>
               </li>
               <li>
-                <Link className="hover:underline" href={`${base}/faq`}>
-                  {tr.nav.faq}
+                <Link className="hover:underline" href={`${base}/en-savoir-plus`}>
+                  {tr.nav.learnMore}
                 </Link>
               </li>
               <li>
@@ -48,13 +45,19 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
                   {tr.nav.contact}
                 </Link>
               </li>
-              */}
+              <li>
+                <Link className="hover:underline" href={`${base}/commander`}>
+                  {tr.nav.commander}
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Légal (selon tes routes réelles) */}
+          {/* Légal */}
           <div>
-            <div className="text-sm font-semibold text-slate-900">{tr.nav.legal}</div>
+            <div className="text-sm font-semibold text-slate-900">
+              {tr.nav.legal}
+            </div>
 
             <ul className="mt-3 grid gap-2 text-sm text-slate-700">
               <li>
@@ -63,10 +66,7 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
                 </Link>
               </li>
               <li>
-                <Link
-                  className="hover:underline"
-                  href={`${base}/confidentialite`}
-                >
+                <Link className="hover:underline" href={`${base}/confidentialite`}>
                   {tr.nav.privacy}
                 </Link>
               </li>
@@ -78,12 +78,6 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
             </ul>
           </div>
         </div>
-
-        <p className="mt-8 text-xs text-slate-500">
-          {isHebrew
-            ? "הערה: זמינות/זמנים/אופן ביצוע תלויים בצורך ובסופר. אנו מתאמים ומלווים."
-            : "Note : disponibilités / délais / modalités dépendent du besoin et du sofer. Nous coordonnons et assurons le suivi."}
-        </p>
 
         <div className="mt-6 text-xs text-slate-400">
           © {new Date().getFullYear()} {tr.brand.name}

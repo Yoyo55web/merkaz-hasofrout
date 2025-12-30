@@ -44,15 +44,16 @@ export const dict = {
       photosAfter:
         "Vous pouvez envoyer des photos sur WhatsApp juste après la demande.",
       noteCoordination:
-        "Merkaz HaSTaM est un centre de coordination. Le travail est réalisé par un sofer qualifié (selon disponibilité).",
-      delaysTitle: "Délais de traitement",
+        "Merkaz HaSTaM est un centre de coordination. Le travail est pris en charge par un sofer STaM diplômé et expérimenté.",
+      // Conservé pour éviter de casser d’autres pages si elles l’utilisent
+      delaysTitle: "Processus de prise en charge",
       delaysText:
-        "Les demandes sont généralement traitées dans un délai de 24 à 72 heures ouvrées, selon le service et la charge en cours. Des urgences peuvent être envisagées selon disponibilité. Vous êtes informé clairement avant toute prise en charge.",
+        "Après votre demande : analyse → orientation → devis clair → prise en charge par un sofer STaM diplômé et expérimenté.",
       examplesTitle: "Exemples de situations traitées",
       examples1:
-        "Mézouzot présentant des lettres affaiblies détectées lors d’une vérification.",
+        "Mézouzot : lettres affaiblies détectées lors d’une vérification.",
       examples2:
-        "Téfilines nécessitant un contrôle approfondi avant une décision.",
+        "Téfilines : contrôle approfondi avant une décision (réparation / remplacement / achat).",
       examples3:
         "Séfer Torah : orientation et coordination après constat d’un besoin de suivi.",
     },
@@ -60,41 +61,44 @@ export const dict = {
     home: {
       badge: "Demande en ligne (30 sec) — aucun paiement pour l’instant",
 
-      h1: "Sofrout sérieuse. Réponse claire. Coordination discrète.",
+      // ✅ Ton H1 final
+      h1: "STaM en Israël — cadre halakhique strict, sofrim diplômés & expérimentés",
       subtitle:
         "STaM = Sefer Torah, Téfilines, Mézouzot • Vérification, achat, restauration • Écritures sur parchemin (Meguilat Esther, etc.).",
-
       micro:
-        "Décrivez votre besoin en 30 secondes → nous coordonnons la demande et vous recevez une réponse claire. Service disponible notamment à Netanya, Jérusalem et Beit Shemesh.",
+        "Décrivez votre besoin en 30 secondes → prise en charge de la demande → réponse claire. Service disponible notamment à Netanya, Jérusalem et Beit Shemesh.",
 
-      trustTitle: "Clair, sérieux, sans pression",
-      // ✅ Quick Win #1 (badges confiance)
+      // TRUST BOX (droite)
+      trustTitle: "Cadre halakhique strict. Devis clair. Suivi structuré.",
       trust1:
-        "Contrôle halakhique rigoureux : vérification/écriture selon des règles strictes et un travail soigné.",
+        "Cadre halakhique strict : vérification/écriture selon les exigences de la Halakha, par un sofer STaM diplômé et expérimenté.",
       trust2:
         "Devis clair avant toute action : estimation transparente et options proposées avant décision.",
       trust3:
-        "Discrétion & coordination professionnelle : confidentialité et suivi sérieux du dossier.",
+        "Compte-rendu clair : explication simple de la situation et des options, avec un suivi structuré.",
 
-      // ✅ Quick Win #2 (Pourquoi)
+      // WHY
       whyTitle: "Pourquoi passer par Merkaz HaSTaM ?",
       whyIntro:
-        "Merkaz HaSTaM n’est ni un simple intermédiaire, ni une vente automatique. Nous assurons un cadre halakhique clair, une coordination sérieuse et un suivi structuré.",
-      why1: "Sélection et coordination avec des sofrim qualifiés (selon disponibilité).",
-      why2: "Communication claire : estimation, délais et options avant décision.",
-      why3: "Accompagnement respectueux, sans pression commerciale.",
-      why4: "Confidentialité : informations traitées de manière interne et discrète.",
+        "Nous assurons un cadre halakhique strict — selon les exigences de la Halakha — une coordination sérieuse et un suivi structuré.",
+      why1: "Pris en charge par un sofer STaM diplômé et expérimenté.",
+      why2: "Communication claire : estimation et options avant décision.",
+      why3: "Suivi structuré jusqu’à la décision.",
+      why4: "",
 
+      // STEPS
       stepsTitle: "Comment ça marche",
       step1t: "1) Vous décrivez votre besoin",
       step1d:
         "Catégorie, ville, urgence, détails. Si besoin, vous pourrez envoyer une photo ensuite.",
-      step2t: "2) Nous coordonnons la demande",
+      step2t: "2) Analyse & orientation",
       step2d:
         "Selon votre situation : vérification, achat, restauration, écriture sur parchemin…",
-      step3t: "3) Vous recevez une réponse claire",
-      step3d: "Estimation / délais / options — simplement et rapidement.",
+      step3t: "3) Devis clair & prise en charge",
+      step3d:
+        "Vous recevez une estimation claire et des options. Ensuite, prise en charge et suivi structuré.",
 
+      // CATEGORIES
       categoriesTitle: "Choisissez votre catégorie",
       cat1t: "Mézouzot",
       cat1d: "Achat • vérification • remplacement",
@@ -106,55 +110,53 @@ export const dict = {
       cat4d:
         "Meguilat Esther • Pitoum HaKetoret • Lamnatse’aḥ • Birkat HaBayit",
 
+      // FAQ (sans délais)
       faqTitle: "Questions fréquentes",
       faq1q: "Combien ça coûte ?",
       faq1a:
         "Ça dépend (catégorie, état, niveau). Vous recevez d’abord une estimation claire et des options. Aucun paiement au moment de la demande.",
-      faq2q: "En combien de temps j’ai une réponse ?",
+      faq2q: "Que dois-je envoyer pour que ce soit clair ?",
       faq2a:
-        "Souvent rapidement après réception des infos. Pour accélérer : ville + catégorie + description (et photo si possible).",
+        "Ville + catégorie + description. Si vous avez une photo (mezouza/tefilines/klaf), vous pourrez l’envoyer ensuite sur WhatsApp.",
       faq3q: "Je veux du mehadrin / très strict — c’est possible ?",
       faq3a:
-        "Oui. Indiquez le niveau souhaité dans la demande, et nous vous orientons vers une option adaptée (selon disponibilité).",
+        "Oui. Indiquez le niveau souhaité dans la demande, et nous vous orientons vers une option adaptée.",
 
-      // ✅ Quick Win #5 — Preuve sociale
-      testimonialsTitle: "Ils nous font confiance",
-      testimonialsSubtitle:
-        "Discrétion, clarté, suivi. Voici des retours typiques que nous recevons.",
-      test1: "“Réponse rapide et claire. On a su quoi faire sans stress.”",
-      test2: "“Très sérieux, on sent le cadre halakhique et le suivi.”",
-      test3: "“Coordination facile, estimation claire avant toute décision.”",
+      // Conservé (même si la section n’est plus affichée)
+      testimonialsTitle: "",
+      testimonialsSubtitle: "",
+      test1: "",
+      test2: "",
+      test3: "",
 
-      finalCtaTitle: "Vous voulez une réponse rapide et sérieuse ?",
+      finalCtaTitle: "Vous voulez une réponse claire et sérieuse ?",
       finalCtaText:
-        "Cliquez sur “Faire une demande”, remplissez le formulaire (30 sec), et recevez une réponse claire.",
-      sticky: "Faire une demande (30 sec)",
+        "Cliquez sur “Faire une demande”, remplissez le formulaire (30 sec), et recevez une estimation claire.",
+      sticky: "", // ✅ pas de sticky mobile
     },
 
     commander: {
       badge: "Demande en ligne — aucun paiement pour l’instant",
       title: "Faire une demande",
       subtitle:
-        "Remplissez le formulaire (30 sec). Nous coordonnons votre demande et vous recevez une réponse claire (notamment Netanya, Jérusalem, Beit Shemesh).",
+        "Remplissez le formulaire (30 sec). Nous analysons votre besoin, vous orientons et coordonnons la prise en charge.",
       step1Short: "Formulaire",
-      step2Short: "Coordination",
-      step3Short: "Réponse",
+      step2Short: "Orientation",
+      step3Short: "Prise en charge",
       micro:
         "Aucun paiement à ce stade. Si besoin, vous pourrez envoyer une photo ensuite sur WhatsApp.",
 
-      halakhicTitle: "Cadre halakhique & sérieux",
+      halakhicTitle: "Cadre halakhique strict — selon les exigences de la Halakha",
       halakhic1:
-        "La vérification / l’écriture est réalisée par un sofer (travail soigné).",
+        "La vérification / l’écriture est réalisée par un sofer STaM diplômé et expérimenté (travail soigné).",
       halakhic2:
         "STaM = Sefer Torah, Téfilines, Mézouzot — réponse adaptée à votre besoin.",
-      halakhic3: "Confidentialité totale : vos informations restent internes.",
-      halakhic4:
-        "Sofrim diplômés et expérimentés : nous privilégions des professionnels avec expérience (selon disponibilité).",
+      halakhic3: "",
+      halakhic4: "Pris en charge par un sofer STaM diplômé et expérimenté.",
 
-      // ✅ Quick Win #4
-      delaysTitle: "Délais & urgences",
+      delaysTitle: "Processus",
       delaysText:
-        "Les demandes sont généralement traitées dans un délai de 24 à 72 heures ouvrées, selon le service et la charge en cours. Des urgences peuvent être envisagées selon disponibilité. Vous êtes informé clairement avant toute prise en charge.",
+        "Analyse → orientation → devis clair → prise en charge → compte-rendu clair.",
 
       formTitle: "Votre demande",
       formSubtitle:
@@ -169,21 +171,22 @@ export const dict = {
         "Expliquez votre situation (ou envoyez une photo) et on vous guide.",
       faq3q: "C’est possible à Netanya / Jérusalem / Beit Shemesh ?",
       faq3a:
-        "Oui, ce sont des zones où nous avons une activité. Et nous traitons aussi les demandes ailleurs en Israël selon disponibilité.",
+        "Oui, ce sont des zones où nous avons une activité. Et nous traitons aussi les demandes ailleurs en Israël.",
 
-      ctaSticky: "Aller au formulaire",
+      ctaSticky: "",
     },
 
     services: {
-      // ✅ Quick Win #4 + #6 (utilisés dans la page services)
       whatYouGetTitle: "Ce que vous recevez",
       whatYouGet1: "Un cadrage clair de votre demande (catégorie, ville, urgence).",
-      whatYouGet2: "Une réponse structurée : estimation, délais, options.",
+      whatYouGet2: "Une réponse structurée : estimation et options.",
       whatYouGet3:
-        "Si nécessaire : coordination du suivi (vérification / réparation / écriture).",
-      delaysTitle: "Délais & urgences",
+        "Si nécessaire : prise en charge et coordination du suivi (vérification / réparation / écriture).",
+
+      delaysTitle: "Processus",
       delaysText:
-        "Traitement typique sous 24 à 72 heures ouvrées (selon service et charge). Urgences possibles selon disponibilité.",
+        "Analyse → orientation → devis clair → prise en charge → compte-rendu clair.",
+
       examplesTitle: "Exemples de situations traitées",
       examples1:
         "Mézouzot : diagnostic avant décision de réparation ou remplacement.",
@@ -229,49 +232,47 @@ export const dict = {
       noPayment: "אין תשלום בשלב זה.",
       photosAfter: "אפשר לשלוח תמונות בוואטסאפ מיד אחרי שליחת הבקשה.",
       noteCoordination:
-        "מרכזהסת״ם הוא מרכז תיאום. העבודה בפועל מתבצעת ע״י סופר מוסמך (בהתאם לזמינות).",
-      delaysTitle: "זמני טיפול",
+        "מרכז הסת״ם הוא מרכז תיאום. העבודה מתבצעת בפועל ע״י סופר סת״ם מוסמך ובעל ניסיון.",
+      delaysTitle: "תהליך הטיפול",
       delaysText:
-        "ברוב המקרים הטיפול מתבצע תוך 24–72 שעות עבודה, בהתאם לסוג השירות ולעומס. טיפול דחוף אפשרי בהתאם לזמינות. תקבלו עדכון ברור לפני כל טיפול.",
+        "לאחר שליחת הבקשה: ניתוח → הכוונה → הצעת מחיר ברורה → טיפול ע״י סופר סת״ם מוסמך ובעל ניסיון.",
       examplesTitle: "דוגמאות למצבים שטופלו",
       examples1: "מזוזות עם אותיות חלשות שאותרו בבדיקה.",
-      examples2: "תפילין שדורשות בדיקה מעמיקה לפני החלטה.",
+      examples2: "תפילין שדורשות בדיקה מעמיקה לפני החלטה (תיקון/החלפה/רכישה).",
       examples3: "ספר תורה: הכוונה ותיאום לפי הצורך.",
     },
 
     home: {
       badge: "בקשה אונליין (30 שנ׳) — ללא תשלום בשלב זה",
 
-      h1: "סופרות ברצינות. מענה ברור. תיאום דיסקרטי.",
+      h1: "סת״ם בישראל — מסגרת הלכתית מחמירה, סופרי סת״ם מוסמכים ובעלי ניסיון",
       subtitle:
         "סת״ם = ספר תורה, תפילין, מזוזות • בדיקה, רכישה, תיקון • כתיבה על קלף (מגילת אסתר ועוד).",
-
       micro:
-        "ממלאים 30 שניות → אנחנו מתאמים את הבקשה → מקבלים מענה ברור. השירות פעיל במיוחד בנתניה, ירושלים ובית שמש.",
+        "ממלאים 30 שניות → טיפול בבקשה → מענה ברור. השירות פעיל במיוחד בנתניה, ירושלים ובית שמש.",
 
-      trustTitle: "ברור, רציני, בלי לחץ",
-      // ✅ Quick Win #1
-      trust1: "בדיקה הלכתית מחמירה: עבודה מוקפדת לפי כללי הסת״ם.",
+      trustTitle: "מסגרת הלכתית מחמירה. הצעת מחיר ברורה. מעקב מסודר.",
+      trust1:
+        "מסגרת הלכתית מחמירה — לפי דרישות ההלכה, ע״י סופר סת״ם מוסמך ובעל ניסיון.",
       trust2: "שקיפות לפני כל פעולה: הערכה ואפשרויות ברורות לפני החלטה.",
-      trust3: "דיסקרטיות ותיאום מקצועי: סודיות מלאה ומעקב מסודר.",
+      trust3: "דוח ברור: הסבר פשוט על המצב והאפשרויות, עם מעקב מסודר.",
 
-      // ✅ Quick Win #2
       whyTitle: "למה דרך מרכז הסת״ם?",
       whyIntro:
-        "מרכזהסת״ם אינו “מכירה אוטומטית” ואינו רק תיווך. אנו מספקים מסגרת הלכתית ברורה, תיאום רציני ומעקב מסודר.",
-      why1: "תיאום עם סופרים מוסמכים (בהתאם לזמינות).",
-      why2: "הסבר ברור: הערכה, זמני טיפול ואפשרויות לפני החלטה.",
-      why3: "ליווי מכבד בלי לחץ מסחרי.",
-      why4: "דיסקרטיות: מידע נשמר פנימי ובאחריות.",
+        "אנו מספקים מסגרת הלכתית מחמירה — לפי דרישות ההלכה — תיאום רציני ומעקב מסודר.",
+      why1: "מטופל ע״י סופר סת״ם מוסמך ובעל ניסיון.",
+      why2: "תקשורת ברורה: הערכה ואפשרויות לפני החלטה.",
+      why3: "מעקב מסודר עד קבלת החלטה.",
+      why4: "",
 
       stepsTitle: "איך זה עובד",
       step1t: "1) מתארים את הצורך",
       step1d:
         "קטגוריה, עיר, דחיפות, פרטים. אפשר לשלוח תמונה אחר כך אם צריך.",
-      step2t: "2) אנחנו מתאמים את הבקשה",
+      step2t: "2) ניתוח והכוונה",
       step2d: "לפי המצב: בדיקה, רכישה, תיקון, כתיבה על קלף…",
-      step3t: "3) מקבלים מענה ברור",
-      step3d: "הערכת מחיר / זמני טיפול / אפשרויות — בפשטות ובמהירות.",
+      step3t: "3) הצעת מחיר וטיפול",
+      step3d: "מקבלים הערכה ברורה ואפשרויות. לאחר מכן טיפול ומעקב מסודר.",
 
       categoriesTitle: "בחר קטגוריה",
       cat1t: "מזוזות",
@@ -287,48 +288,42 @@ export const dict = {
       faq1q: "כמה זה עולה?",
       faq1a:
         "זה תלוי (קטגוריה, מצב, רמה). קודם מקבלים הערכה ברורה ואפשרויות. אין תשלום בשלב הבקשה.",
-      faq2q: "תוך כמה זמן מקבלים תשובה?",
+      faq2q: "מה לשלוח כדי שזה יהיה ברור?",
       faq2a:
-        "לרוב מהר אחרי קבלת הפרטים. כדי לזרז: עיר + קטגוריה + תיאור (ותמונה אם אפשר).",
+        "עיר + קטגוריה + תיאור. אם יש תמונה (מזוזה/תפילין/קלף) אפשר לשלוח אחר כך בוואטסאפ.",
       faq3q: "אני רוצה מהודר / מחמיר מאוד — אפשר?",
-      faq3a:
-        "כן. ציינו את הרמה בבקשה ונכוון לפתרון מתאים (בהתאם לזמינות).",
+      faq3a: "כן. ציינו את הרמה בבקשה ונכוון לפתרון מתאים.",
 
-      // ✅ Quick Win #5 — Preuve sociale
-      testimonialsTitle: "לקוחות מספרים",
-      testimonialsSubtitle:
-        "דיסקרטיות, בהירות ומעקב. אלו דוגמאות למשובים אופייניים.",
-      test1: "“מענה מהיר וברור. ידענו בדיוק מה לעשות.”",
-      test2: "“רצינות והקפדה הלכתית. הרגשנו בידיים טובות.”",
-      test3: "“תיאום קל והערכה ברורה לפני כל החלטה.”",
+      testimonialsTitle: "",
+      testimonialsSubtitle: "",
+      test1: "",
+      test2: "",
+      test3: "",
 
-      finalCtaTitle: "רוצים מענה מהיר וברור?",
+      finalCtaTitle: "רוצים מענה ברור ורציני?",
       finalCtaText:
-        "לחצו “שליחת בקשה”, מלאו טופס קצר (30 שנ׳), ותקבלו מענה מסודר.",
-      sticky: "שליחת בקשה (30 שנ׳)",
+        "לחצו “שליחת בקשה”, מלאו טופס קצר (30 שנ׳), וקבלו הערכה מסודרת.",
+      sticky: "",
     },
 
     commander: {
       badge: "בקשה אונליין — ללא תשלום בשלב זה",
       title: "שליחת בקשה",
       subtitle:
-        "ממלאים טופס קצר (30 שנ׳). אנחנו מתאמים את הבקשה ומחזירים מענה ברור (במיוחד נתניה, ירושלים, בית שמש).",
+        "ממלאים טופס קצר (30 שנ׳). אנחנו מנתחים את הצורך, מכוונים ומתאמים טיפול.",
       step1Short: "טופס",
-      step2Short: "תיאום",
-      step3Short: "מענה",
+      step2Short: "הכוונה",
+      step3Short: "טיפול",
       micro: "אין תשלום בשלב זה. אפשר לשלוח תמונה אחר כך בוואטסאפ.",
 
-      halakhicTitle: "מסגרת הלכתית ורצינות",
-      halakhic1: "הבדיקה/כתיבה מתבצעת ע״י סופר (עבודה מוקפדת).",
+      halakhicTitle: "מסגרת הלכתית מחמירה — לפי דרישות ההלכה",
+      halakhic1: "הבדיקה/כתיבה מתבצעת ע״י סופר סת״ם מוסמך ובעל ניסיון.",
       halakhic2: "סת״ם = ספר תורה, תפילין, מזוזות — מענה לפי הצורך.",
-      halakhic3: "דיסקרטיות מלאה: המידע נשאר פנימי בלבד.",
-      halakhic4:
-        "סופרים מוסמכים ובעלי ניסיון: אנחנו מעדיפים בעלי מקצוע עם ניסיון (בהתאם לזמינות).",
+      halakhic3: "",
+      halakhic4: "מטופל ע״י סופר סת״ם מוסמך ובעל ניסיון.",
 
-      // ✅ Quick Win #4
-      delaysTitle: "זמנים ודחיפות",
-      delaysText:
-        "בדרך כלל הטיפול תוך 24–72 שעות עבודה (לפי השירות והעומס). טיפול דחוף אפשרי בהתאם לזמינות. תקבלו עדכון ברור לפני כל טיפול.",
+      delaysTitle: "תהליך",
+      delaysText: "ניתוח → הכוונה → הצעת מחיר → טיפול → דוח ברור.",
 
       formTitle: "הבקשה שלכם",
       formSubtitle:
@@ -340,19 +335,20 @@ export const dict = {
       faq2q: "אני לא בטוח מה בדיוק צריך…",
       faq2a: "תארו מצב (או שלחו תמונה) ונכוון אתכם.",
       faq3q: "זה אפשרי בנתניה / ירושלים / בית שמש?",
-      faq3a: "כן, אלו אזורים שבהם יש פעילות. ובשאר הארץ — בהתאם לזמינות.",
+      faq3a: "כן, אלו אזורים שבהם יש פעילות. וגם בשאר הארץ.",
 
-      ctaSticky: "לטופס",
+      ctaSticky: "",
     },
 
     services: {
       whatYouGetTitle: "מה מקבלים",
       whatYouGet1: "מיקוד הבקשה (קטגוריה, עיר, דחיפות).",
-      whatYouGet2: "מענה מסודר: הערכה, זמני טיפול ואפשרויות.",
-      whatYouGet3: "אם צריך: תיאום המשך (בדיקה / תיקון / כתיבה).",
-      delaysTitle: "זמנים ודחיפות",
-      delaysText:
-        "טיפול טיפוסי תוך 24–72 שעות עבודה (לפי שירות ועומס). דחוף — בהתאם לזמינות.",
+      whatYouGet2: "מענה מסודר: הערכה ואפשרויות.",
+      whatYouGet3: "אם צריך: טיפול ותיאום המשך (בדיקה / תיקון / כתיבה).",
+
+      delaysTitle: "תהליך",
+      delaysText: "ניתוח → הכוונה → הצעת מחיר → טיפול → דוח ברור.",
+
       examplesTitle: "דוגמאות למצבים",
       examples1: "מזוזות: אבחון לפני החלטה על תיקון/החלפה.",
       examples2: "תפילין: בדיקה לפני תיקון או המלצה.",

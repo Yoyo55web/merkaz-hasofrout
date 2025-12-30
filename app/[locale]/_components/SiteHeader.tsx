@@ -22,7 +22,6 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);
 
-  // Fermer au changement de route (au clic sur un lien)
   function close() {
     setOpen(false);
   }
@@ -52,8 +51,12 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
     setTimeout(() => drawerRef.current?.focus(), 0);
   }, [open]);
 
+  // ✅ Ouvre le drawer du bon côté :
+  // FR/LTR => droite | HE/RTL => gauche
+  const drawerSide = isHebrew ? "left-0" : "right-0";
+
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
         {/* Brand */}
         <Link
@@ -133,7 +136,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
           {/* Overlay */}
           <button
             aria-label={isHebrew ? "סגור תפריט" : "Fermer le menu"}
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 bg-black/55"
             onClick={() => setOpen(false)}
           />
 
@@ -142,8 +145,8 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
             ref={drawerRef}
             tabIndex={-1}
             className={[
-              "absolute top-0 h-full w-[86%] max-w-sm bg-white shadow-2xl outline-none",
-              isHebrew ? "left-0" : "right-0",
+              "absolute top-0 h-full w-[88%] max-w-sm bg-white shadow-2xl outline-none",
+              drawerSide,
             ].join(" ")}
           >
             <div className="flex items-center justify-between border-b px-5 py-4">
@@ -163,49 +166,25 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
               </button>
             </div>
 
-            {/* Micro trust */}
-            <div className="px-5 py-4">
-              <div className="rounded-2xl border bg-slate-50 p-4 text-xs text-slate-600">
-                {isHebrew ? (
-                  <>
-                    <div className="font-semibold text-slate-900">
-                      מסגרת הלכתית • דיסקרטיות
-                    </div>
-                    <div className="mt-1">
-                      בדיקה/כתיבה ע״י סופר מקצועי (בהתאם לזמינות)
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="font-semibold text-slate-900">
-                      Cadre halakhique • discrétion
-                    </div>
-                    <div className="mt-1">
-                      Vérification/écriture par un sofer compétent (selon
-                      disponibilité)
-                    </div>
-                  </>
-                )}
+            {/* Links (lisibles + “cards”) */}
+            <nav className="px-5 py-5">
+              <div className="grid gap-2">
+                <DrawerLink href={`/${locale}`} onClick={close}>
+                  {tr.nav.home}
+                </DrawerLink>
+
+                <DrawerLink href={`/${locale}/services`} onClick={close}>
+                  {tr.nav.services}
+                </DrawerLink>
+
+                <DrawerLink href={`/${locale}/en-savoir-plus`} onClick={close}>
+                  {tr.nav.learnMore}
+                </DrawerLink>
+
+                <DrawerLink href={`/${locale}/contact`} onClick={close}>
+                  {tr.nav.contact}
+                </DrawerLink>
               </div>
-            </div>
-
-            {/* Links */}
-            <nav className="px-5 pb-6">
-              <DrawerLink href={`/${locale}`} onClick={close}>
-                {tr.nav.home}
-              </DrawerLink>
-
-              <DrawerLink href={`/${locale}/services`} onClick={close}>
-                {tr.nav.services}
-              </DrawerLink>
-
-              <DrawerLink href={`/${locale}/en-savoir-plus`} onClick={close}>
-                {tr.nav.learnMore}
-              </DrawerLink>
-
-              <DrawerLink href={`/${locale}/contact`} onClick={close}>
-                {tr.nav.contact}
-              </DrawerLink>
 
               {/* CTA */}
               <Link
@@ -220,6 +199,13 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
                 {isHebrew ? "ללא תשלום בשלב זה" : "Aucun paiement à ce stade"}
               </div>
             </nav>
+
+            {/* Bas du drawer (aide visuelle propre) */}
+            <div className="mt-auto border-t px-5 py-4 text-xs text-slate-500">
+              {isHebrew
+                ? "שאלות? עברו לעמוד יצירת קשר."
+                : "Une question ? Passez par la page Contact."}
+            </div>
           </div>
         </div>
       )}
@@ -240,7 +226,7 @@ function DrawerLink({
     <Link
       href={href}
       onClick={onClick}
-      className="block rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+      className="block rounded-2xl border bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
     >
       {children}
     </Link>
