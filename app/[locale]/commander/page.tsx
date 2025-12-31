@@ -49,6 +49,14 @@ export default async function Page({
 
   const heroSrc = "/images/commander-hero.png";
 
+  // ✅ items “Cadre halakhique strict” : on filtre les vides pour éviter une puce vide
+  const halakhicItems = [
+    tr.commander.halakhic1,
+    tr.commander.halakhic2,
+    tr.commander.halakhic3,
+    // note: on n’affiche plus halakhic4 (tu voulais supprimer le 4e)
+  ].filter((s) => typeof s === "string" && s.trim().length > 0);
+
   return (
     <main className="min-h-screen bg-white text-slate-900 pb-24 md:pb-0">
       <SeoJsonLd locale={locale} pathname="/commander" />
@@ -76,7 +84,7 @@ export default async function Page({
                 {tr.commander.subtitle}
               </p>
 
-              {/* Cadre halakhique */}
+              {/* Cadre halakhique (version courte) */}
               <div className="mt-6 rounded-xl border bg-slate-50 px-4 py-3 text-sm text-slate-700">
                 <span className="font-semibold">
                   {isHebrew ? "מסגרת הלכתית:" : "Cadre halakhique :"}
@@ -86,17 +94,7 @@ export default async function Page({
                   : "Vérification et écriture réalisées par un sofer, selon les règles du STaM — avec transparence et discrétion."}
               </div>
 
-              {/* ✅ Quick Win #4: Delays & urgences */}
-              <div className="mt-4 rounded-xl border bg-white px-4 py-3 text-sm text-slate-700">
-                <div className="font-semibold">
-                  {tr.commander.delaysTitle}
-                </div>
-                <p className="mt-1 text-slate-600">
-                  {tr.commander.delaysText}
-                </p>
-              </div>
-
-              {/* Steps */}
+              {/* Steps (3 étapes courtes) */}
               <div className="mt-6 grid grid-cols-3 gap-2 text-xs text-center">
                 <div className={`rounded-lg py-2 ${accentSoft}`}>
                   1. {tr.commander.step1Short}
@@ -111,31 +109,24 @@ export default async function Page({
 
               <p className="mt-4 text-xs text-slate-500">{tr.commander.micro}</p>
 
-              {/* CTA */}
+              {/* ✅ CTA: on enlève “Aller au formulaire”, on met Services + Contact */}
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#form"
+                <Link
+                  href={`/${locale}/services`}
                   className={`inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white transition sm:w-auto ${accent}`}
                 >
-                  {isHebrew ? "לטופס (30 שנ׳)" : "Aller au formulaire (30 sec)"}
-                </a>
+                  {isHebrew ? "שירותים" : "Services"}
+                </Link>
 
                 <Link
-                  href={`/${locale}/en-savoir-plus`}
+                  href={`/${locale}/contact`}
                   className="inline-flex w-full items-center justify-center rounded-xl border bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 sm:w-auto"
                 >
-                  {isHebrew ? "מידע נוסף" : "En savoir plus"}
+                  {isHebrew ? "צור קשר" : "Contact"}
                 </Link>
               </div>
 
-              <div className="mt-3">
-                <Link
-                  href={`/${locale}`}
-                  className="text-sm font-semibold text-slate-700 hover:underline"
-                >
-                  {isHebrew ? "חזרה לדף הבית" : "Retour à l’accueil"}
-                </Link>
-              </div>
+              {/* ✅ On enlève le lien “Retour à l’accueil” ici (header suffit) */}
 
               {/* Mobile image */}
               <div className="mt-8 md:hidden">
@@ -149,18 +140,7 @@ export default async function Page({
                 <HeroImageCard src={heroSrc} isHebrew={isHebrew} />
               </div>
 
-              <div className="rounded-2xl border bg-slate-50 p-6">
-                <h2 className="font-semibold">{tr.commander.halakhicTitle}</h2>
-                <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                  <li>• {tr.commander.halakhic1}</li>
-                  <li>• {tr.commander.halakhic4}</li>
-                  <li>• {tr.commander.halakhic2}</li>
-                  <li>• {tr.commander.halakhic3}</li>
-                </ul>
-                <p className="mt-3 text-xs text-slate-500">
-                  {isHebrew ? "ללא תשלום בשלב זה" : "Aucun paiement à ce stade"}
-                </p>
-              </div>
+              {/* ✅ On retire le bloc “Cadre halakhique strict” d’ici, et on le déplace plus bas (sous FAQ) */}
             </div>
           </div>
         </div>
@@ -181,44 +161,45 @@ export default async function Page({
           </div>
 
           {/* FAQ */}
-          <div className="rounded-2xl border bg-slate-50 p-6">
-            <h3 className="text-lg font-semibold">{tr.commander.faqTitle}</h3>
+          <div className="space-y-4">
+            <div className="rounded-2xl border bg-slate-50 p-6">
+              <h3 className="text-lg font-semibold">{tr.commander.faqTitle}</h3>
 
-            <div className="mt-4 space-y-4 text-sm text-slate-700">
-              <div>
-                <div className="font-semibold">{tr.commander.faq1q}</div>
-                <p className="mt-1 text-slate-600">{tr.commander.faq1a}</p>
+              <div className="mt-4 space-y-4 text-sm text-slate-700">
+                <div>
+                  <div className="font-semibold">{tr.commander.faq1q}</div>
+                  <p className="mt-1 text-slate-600">{tr.commander.faq1a}</p>
+                </div>
+                <div>
+                  <div className="font-semibold">{tr.commander.faq2q}</div>
+                  <p className="mt-1 text-slate-600">{tr.commander.faq2a}</p>
+                </div>
+                <div>
+                  <div className="font-semibold">{tr.commander.faq3q}</div>
+                  <p className="mt-1 text-slate-600">{tr.commander.faq3a}</p>
+                </div>
               </div>
-              <div>
-                <div className="font-semibold">{tr.commander.faq2q}</div>
-                <p className="mt-1 text-slate-600">{tr.commander.faq2a}</p>
-              </div>
-              <div>
-                <div className="font-semibold">{tr.commander.faq3q}</div>
-                <p className="mt-1 text-slate-600">{tr.commander.faq3a}</p>
-              </div>
+
+              {/* ✅ Tu voulais supprimer ces boutons (formulaire juste à côté) => on les enlève */}
             </div>
 
-            <div className="mt-6 flex flex-col gap-2">
-              <a
-                href="#form"
-                className={`rounded-xl py-3 text-center text-sm font-semibold text-white transition ${accent}`}
-              >
-                {isHebrew ? "למלא טופס (30 שנ׳)" : "Remplir le formulaire (30 sec)"}
-              </a>
-
-              <Link
-                href={`/${locale}`}
-                className="rounded-xl border bg-white py-3 text-center text-sm font-semibold hover:bg-slate-100"
-              >
-                {isHebrew ? "חזרה לדף הבית" : "Retour à l’accueil"}
-              </Link>
+            {/* ✅ Bloc “Cadre halakhique strict” déplacé ici, sous Questions rapides */}
+            <div className="rounded-2xl border bg-slate-50 p-6">
+              <h2 className="font-semibold">{tr.commander.halakhicTitle}</h2>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                {halakhicItems.map((txt) => (
+                  <li key={txt}>• {txt}</li>
+                ))}
+              </ul>
+              <p className="mt-3 text-xs text-slate-500">
+                {isHebrew ? "ללא תשלום בשלב זה" : "Aucun paiement à ce stade"}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sticky CTA mobile */}
+      {/* Sticky CTA mobile (on garde: très utile sur mobile) */}
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-white/95 backdrop-blur p-3 md:hidden">
         <a
           href="#form"
@@ -255,7 +236,11 @@ function HeroImageCard({
           sizes="(max-width: 768px) 100vw, 50vw"
         />
 
-        <div className={`pointer-events-none absolute inset-0 ${mobile ? "bg-white/10" : "bg-white/5"}`} />
+        <div
+          className={`pointer-events-none absolute inset-0 ${
+            mobile ? "bg-white/10" : "bg-white/5"
+          }`}
+        />
         <div
           className={`pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b ${
             mobile ? "from-white/25 to-transparent" : "from-white/15 to-transparent"
@@ -265,13 +250,11 @@ function HeroImageCard({
 
       <div className="px-5 py-4">
         <div className="text-xs font-semibold text-slate-700">
-          {isHebrew ? "דיוק • בדיקה • אחריות" : "Précision • Contrôle • Suivi"}
-        </div>
-        <div className="mt-1 text-xs text-slate-500">
           {isHebrew
-            ? "התיאום תלוי בצורך ובזמינות הסופר."
-            : "La coordination dépend du besoin et de la disponibilité du sofer."}
+            ? "סופר מוסמך • בדיקה אמינה • מעקב בוואטסאפ"
+            : "Sofer qualifié • Vérification fiable • Suivi WhatsApp"}
         </div>
+        {/* ✅ phrase “La coordination dépend…” supprimée */}
       </div>
     </div>
   );
